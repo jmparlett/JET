@@ -37,10 +37,17 @@ file buffer: contains all lines of file and is what will actually be edited. Upo
 
 	drawscreen():
 storecursor position
-move cursor to home (0,0)
-starting at current row in file buff write row to STDOUT followed by "\r\n" if no row is present write "~\r\n"
-stop at current row + editorrows
+move cursor to home 
+starting at top line on screen draw to bottom line on screen
 set cursor to previous position
+
+Line truncation:
+	use a global var to tell what position to start drawing a line;
+	if x > then col count but < line len then this global is incremented 
+	when moving to a new line this can be set to 0 or we can start at x=line len and global var = line len
+
+	for drawing starting at a certain position in the line if (global var + col count) > len of line then draw nothing
+	else draw (line ptr + (global var + col count)) which should be (len - (global var + col count))
 _______________Keyboard input______________________________ 
 
 
@@ -48,8 +55,29 @@ _______________Keyboard input______________________________
 _______________Cursor__________________________________
 
 how to move the cursor: 
-		
-		ANSI Escape code: Do i need to be in raw for this?
+		ts = top line on screen; bs = bottom line on screen; cl = current line.
+
+		need to use ansi escape codes written to console
+
+		when cursor moves left: decrease x position by 1 while x greater then 0
+				
+				if x == 0 then move cursor up one line and set x to last char in line
+				cl = cl->prev
+				x = line len -1
+
+		when cursor moves right: increase x by 1 while x < col count
+				if x == line len -1 then move cursor down one line and set x to first char in line
+				cl = cl->nx
+				x = 0
+
+		when cursor moves up decrease y by 1 while y greater then 0. If y becomes less than screen top then scroll up.
+				to scroll up ts=ts->prev and bs=bs->prev.	
+				cl=cl->prev
+				
+
+		when cursor moves down increase y by 1 while y < line count
+				to scroll down ts=ts->next and bs=bs->next.	
+				cl=cl->next
 
 
 
@@ -58,6 +86,15 @@ how to move the cursor:
 _______________Notes______________________
 rows 33, cols 120
 
-Note: the screen rows buffer structure must be entirely different from file structure as you will be writeing more text than the screen rows hold.
 
 
+___________________Possible bugs______________________________-
+not sure is ansii command to set cursor uses zero indexes or not but it appears to set one less than desired position. given 1 (desired pos is 2) it sets position to all the left on screen
+
+
+
+mon 8-12
+tues 7-11
+weds 8-12
+fri 8-12
+fri 8-1

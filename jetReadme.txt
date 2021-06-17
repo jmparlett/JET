@@ -20,9 +20,8 @@ screen buffer: based on position in file and number of rows a range of rows from
 		a newline at the end of each file row. if file buf is empty then "~\r\n" will be written in th
 		e place of empty rows.
 
-		line to long: attempt to split and advance the count until whole line is written. Break if reached
-			      max rows.
-		
+		line to long: if x is at an off screen position start drawing at a (colc * x//colc)
+				
 
 file buffer: contains all lines of file and is what will actually be edited. Upon saving filebuffer should be
 	     written to file.
@@ -48,7 +47,43 @@ Line truncation:
 
 	for drawing starting at a certain position in the line if (global var + col count) > len of line then draw nothing
 	else draw (line ptr + (global var + col count)) which should be (len - (global var + col count))
-_______________Keyboard input______________________________ 
+
+
+
+--------------writing to lines--------------
+line->len must ALWAYS be accurate or shit will break!!!!
+
+c = printable char
+s[x] = current position
+x = index
+if x+1 > len of line then len realloc(line, len+colc)
+given c, if s[x] is empty s[x] = c and x+=1, len+=1
+	if s[x] is not empty then insert c at pos x and push all chars forward in array
+	x+=1, len+=1
+
+-backspace
+if x==0 and len == 0 then move to previous lines last char and remove current line from linked list.
+
+elif x==0 them append line to previous line and remove line; move x to last char of new line.
+
+else
+x-=1; len-=1; remove [s];
+
+first two cases will be handled by remove line backspace will simply callit
+
+-delete
+similar behavior to backspace removes a line if x=len-1 (last position)
+else
+len-=1 remove s[x+1]
+
+
+-enter
+if x-1 == len then add an empty line and position cursor at start of line
+
+else split the current line at position x, insert a new line below and copy right part of line to new line
+
+addline() will handle these cases enter pretty much only calls addline
+
 
 
 
@@ -91,7 +126,7 @@ rows 33, cols 120
 ___________________Possible bugs______________________________-
 not sure is ansii command to set cursor uses zero indexes or not but it appears to set one less than desired position. given 1 (desired pos is 2) it sets position to all the left on screen
 
-
+delete needs to account for adjusting indexes of lines and shifting y coordinates as well as x. Deleteion needs a lot of work -_- ........
 
 mon 8-12
 tues 7-11

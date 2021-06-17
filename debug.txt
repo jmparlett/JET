@@ -1,0 +1,56 @@
+
+--------1---------
+J.cx, J.cy 0,1
+cline idx: 1
+cline len: 1
+cline contents: 1
+cline pr is null: 0
+cline nx is null: 0
+
+--------2---------
+J.cx, J.cy 0,2
+cline idx: 2
+cline len: 1
+cline contents: 2
+cline pr is null: 0
+cline nx is null: 0
+
+--------3---------
+J.cx, J.cy 0,3
+cline idx: 3
+cline len: 1
+cline contents: 3
+cline pr is null: 0
+cline nx is null: 0
+
+--------4---------
+J.cx, J.cy 0,3
+cline idx: 3
+cline len: 1
+cline contents: 3
+cline pr is null: 0
+cline nx is null: 0
+
+--------5---------
+J.cx, J.cy 0,3
+cline idx: 3
+cline len: 1
+cline contents: 3
+cline pr is null: 0
+cline nx is null: 0
+
+--------6---------
+J.cx, J.cy 0,3
+cline idx: 3
+cline len: 1
+cline contents: 3
+cline pr is null: 0
+cline nx is null: 0
+
+--------7---------
+J.cx, J.cy 0,3
+cline idx: 3
+cline len: 1
+cline contents: 3
+cline pr is null: 0
+cline nx is null: 0

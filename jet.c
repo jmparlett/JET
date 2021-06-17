@@ -4,6 +4,7 @@
 #include <sys/ioctl.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "kbgetch.h"
 #include "jet.h"
 
@@ -14,6 +15,12 @@
 static struct termios save_term; /* previous term settings */
 static int termsaved; /* status of function */
 char cpos[SCRDIMBYTES];  /* string used for cursor position */
+
+/*****PROTOS******/
+void insertchar(frow *, char);
+void removechar(frow *);
+void backspace(void);
+
 
 /**************************** RAW MODE ******************************************/
 int enterraw(int fd)
@@ -68,33 +75,10 @@ int getwindowsize(struct winsize winstruc){
 
 
 /********************************** Editor Structure *****************************/
-typedef struct frow{ /* file row struct */
 
-	int idx; /* line num in file */
-	
-	int len; /* length of line */
-	
-	struct frow *nx; /* next node */
+static editor J; /***** IMPORTANT!!! main editor obj *****/
 
-	struct frow *pr; /* prev node */
 
-	char *s; /* string of line */
-
-} frow;
-
-typedef struct editor{
-
-	int cx, cy; /* position */
-	int rowc;   /*num rows */
-	int colc;   /*num cols */
-	int drawstart; /* position to begin drawing each line. Used for truncation */
-	frow *fline; /*first line/ head of linked list */
-	frow *cline; /* current line */
-	frow *tsl; /* top screen line */
-	
-} editor;
-
-static editor J;
 int initeditor(){
 
 	write(STDOUT, "\x1b[H", 3); /* send cursor to 0,0 (home) */
@@ -148,9 +132,9 @@ int drawscreen(){
 	
 	
 	write(STDOUT, "\x1b[2J", 4); /* clear screen */
-	//write(STDOUT, "\x1b[s", 3); /* save cursor position */
 	write(STDOUT, "\x1b[H", 3); /* move cursor home */
-	
+	scrbufappend(&buf, "\r\n", 2);
+
 	int i=0;
 
 	frow *t = J.tsl; /* file row pointer */
@@ -188,10 +172,10 @@ int drawscreen(){
 }
 
 /*********************************** KEYBOARD INPUT ***************************************/
-char kbinput(){
+void kbinput(){
 	char b = kbgetch();
 	
-	if(b == '\x1b'){ /* we have an escape sequence */
+	if(b == '\x1b'){ /* we have an escape */
 		if((b=kbgetch()) != '['){ /* it was a single escape we want to ungetch and call kbinput to handle */
 			ungetch(b);
 			kbinput();
@@ -217,14 +201,14 @@ char kbinput(){
 				}
 				break;
 				case 'C': /* move right */
-				if(J.cx == J.cline->len -1 && J.cline->nx != NULL){ /* move to next line */
+				if(J.cx == J.cline->len  && J.cline->nx != NULL){ /* move to next line */
 					J.cline = J.cline->nx;
 					if(J.cy == J.rowc-1) J.tsl = J.tsl->nx; /* scroll window down one line */
 					else J.cy++;
 	
 					J.cx = 0; /* first index */
 					fprintf(stdout, "J.cx: %d\n",J.cx); 
-				} else if(J.cx < J.cline->len-1) {
+				} else if(J.cx < J.cline->len) {
 					fprintf(stdout, "J.cx: %d\n",J.cx); 
 					J.cx++;
 				}
@@ -253,6 +237,12 @@ char kbinput(){
 
 			}
 		}
+	} else if(typeable(b)){ /* add character to page... I cant think of a good way to say typeing stuff goes here */
+		insertchar(J.cline, b);
+	
+	} else if(b == BKSPC) { /* delete character or lines if used at beginning of line standard backspace stuff */
+		backspace();
+
 	} else if(b == QUIT){
 		 exitraw(STDIN);
 		 exit(0);
@@ -260,17 +250,18 @@ char kbinput(){
 
 
 }
-/************************File Buffer******************************/
+/************************Writeing******************************/
 
 
-void addrow(void){
+void addline(void){
 	if(J.fline == NULL){ /* no lines yet */
 		frow *p = (frow *)malloc(sizeof(frow));	
 		p-> idx = 0;
 		p->nx = NULL;
 		p->pr = NULL;
 		p->len = 0;
-		p->s = (char *)malloc(J.colc);
+		p->mlen = J.colc;
+		p->s = (char *)calloc(J.colc, sizeof(char));
 		J.fline = J.cline = J.tsl = p;
 		
 	} else { /* add new row after J.cline */
@@ -279,7 +270,9 @@ void addrow(void){
 		new->idx = J.cline->idx+1;
 		new->nx = J.cline->nx;
 		new->pr = J.cline;
-		new->s = (char *)malloc(J.colc);
+		new->mlen = J.colc;
+		new->s = (char *)calloc(J.colc, sizeof(char));
+
 		new->len = 0;
 		J.cline->nx = new;
 		if(new->nx != NULL){
@@ -293,7 +286,86 @@ void addrow(void){
 }
 
 
+void enter(void){ /* used on for enter not a general function */
+	
+	if(J.fline == NULL){ /* no lines yet so add first line */	
+		addline();
+		J.cx = J.cy = 0;
+	} else if(J.cx == J.cline->len){ /* at end of a line so add a new one */
+		addline();
+		J.cline = J.cline->nx;
+		J.cy++;
+		J.cx=0;
+		
+	} else { /* copy everything from cursor to end of line to new line inserted below then delete moved chars*/
+		addline();
+		int t = J.cx, i; /* remember position for deletion later */
+		for(i=t, J.cx=0; i < J.cline->len; ++i) insertchar(J.cline->nx, J.cline->s[i]); /* copy chars */
+		for(; --J.cline->len >= t; J.cline->s[J.cline->len] = 0); /* delete chars */
+		J.cline->len++; /* after loop len is value of last index. Should be one above index */
 
+	
+	}
+
+}
+
+void deleteline(frow *line){ /* removes line from list preserves no data like "dd" in vim */
+	line->pr->nx = line->nx;
+	line->nx->pr = line->pr;
+	free(line);
+}
+
+
+
+void backspace(void){ /* not a generally useable function do not use out side of backspace */
+	if(J.cx == 0 && J.cline->pr != NULL){/* if at back of line *nd there is a previous line */		
+		J.cline = J.cline->pr;
+
+		int t = J.cx = J.cline->len; /* kinda jank but we have to set this so insertchar works correctly 
+						   also record it so we can set x to the joined point of the lines*/
+
+
+		if(J.cline->nx->len == 0) { /* if empty delete */
+
+			deleteline(J.cline->nx);
+
+		} else { /* append text to previous line then delete */
+
+			for(int i=0; i < J.cline->nx->len; ++i) insertchar(J.cline, J.cline->nx->s[i]);
+
+			deleteline(J.cline->nx);	
+		}
+
+		J.cx = t;
+		J.cy--;
+ 	} else if(J.cline->len > 0 && J.cx > 0){
+		/* delete character behind cursor and move cursor back one and decrement line count by 1*/
+		for(int i=J.cx; i < J.cline->len; i++) J.cline->s[i-1] = J.cline->s[i];
+		J.cx--;
+		J.cline->len--;
+	}
+}
+
+/* add a character into the current line at the current position */
+void insertchar(frow *line, char c){
+	
+	if(line->len+1 == line->mlen) extendline(line, J.colc);/* if about to overflow alloc another screens worth of space for line */
+
+	if(!typeable(line->s[J.cx])){
+		line->s[J.cx] = c;
+		line->len++;
+		J.cx++;
+	} else {
+		int i=line->len; /* index of position beyond last char in str. Recall we have already ensured we have enough space */
+		while( i-- > J.cx){
+			line->s[i] = line->s[i-1]; 
+		}	
+		line->s[J.cx] = c;
+		line->len++;
+		J.cx++;
+	}
+
+}
 
 
 
@@ -311,12 +383,14 @@ int main()
 
 	enterraw(STDIN);
 	initeditor();
-
+	
+	FILE *debug = fopen("debug.txt", "w");
+	int dlineno=1;
 
 
 	
 	int i=100;
-	while(i--) addrow();
+	while(i--) addline();
 	while(J.cline->nx != NULL){ 
 		char s[10]; snprintf(s,10,"%d", J.cline->idx);
 		strcpy(J.cline->s, s);
@@ -337,6 +411,15 @@ int main()
 		drawscreen();
 //		fprintf(stderr, cpos+1);
 //		fprintf(stderr, "\nJ.cx, J.cy %d,%d", J.cx,J.cy);
+		fprintf(debug, "\n--------%d---------\n", dlineno);
+		fprintf(debug, "J.cx, J.cy %d,%d\n", J.cx,J.cy);
+		fprintf(debug, "cline idx: %d\n", J.cline->idx);
+		fprintf(debug, "cline len: %d\n", J.cline->len);
+		fprintf(debug, "cline contents: %s\n", J.cline->s);
+		fprintf(debug, "cline pr is null: %d\n", (J.cline->pr == NULL));
+		fprintf(debug, "cline nx is null: %d\n", (J.cline->nx == NULL));
+		fflush(debug);
+		dlineno++;
 	}
 
 

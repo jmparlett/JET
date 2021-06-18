@@ -88,15 +88,31 @@ tab
 
 	how the fuck do you deal withs tabs :( whyyyyyyy.
 	taboff(): calculate tabs to the left of x and return an appropriate offset value (on my system tabs = 5 spaces)
-<<<<<<< HEAD
+	"The traditional meaning of TAB is to move the cursor to the next multiple of tab width (8 by the Java spec)." What?
+	So this means we need a function to calculate tab offset. We can do this by faking tabs as space in a func.
+	tc = tabcount f = current offset i = index of current tab
+	for( char c in array )
+		if c == '\t' (calc tabs index + current offsets distance to next multiple of tab)
+			t = i
+			while(t+f % 8 != 0) ++t;
+			f += t-i;
+			tc++;
+	this should done only for tabs behind current position
 	
-	for each tab in line we need to calculate its indexes distance from the next multiple of 8 ... so were gonna fake in a function
-=======
-	okay apparently we just dont do tabs because. Instead insert a certain amount of spaces to denote indentation. The
-	standard is 4. This means we dont need to calculate offset. 
-	However how do you decide what is a tab and what is 4 spaces for correct cursor behavior?
->>>>>>> ec3e322ea1a26ac10b250bbfe5c6453932afdf6b
-
+	after accounting for all the weirdness of how I chose to render the cursor this is the final algorithm in C
+	int taboff(char *s, int x){ /* calculate tab offset for rendering cursor */
+         int f, i, t;
+         f = i = 0;
+         while(i < x){
+                 if(s[i] == '\t'){
+                          t = i+1;
+                          while((t+f) % TABSIZE != 0 ) t++; /* dont forget %'s precedence*/
+                          f += t-(i+1); 
+                 }
+                 i++;
+         }
+         return f;
+ 	}
 
 # Cursor
 Cursor snapping will always snap to end of line ready to type

@@ -12,6 +12,8 @@
 #define STDOUT STDOUT_FILENO
 #define STERR STDERR_FILENO
 #define SCRDIMBYTES 100 /* used in kbinput() to capture cursor x and y as a string. Must be able to capture the max screen dimensions */
+#define UP 1000
+#define DOWN 1001
 static struct termios save_term; /* previous term settings */
 static int termsaved; /* status of function */
 char cpos[SCRDIMBYTES];  /* string used for cursor position */
@@ -20,6 +22,7 @@ char cpos[SCRDIMBYTES];  /* string used for cursor position */
 void insertchar(frow *, char);
 void removechar(frow *);
 void backspace(void);
+void enter(void);
 
 
 /**************************** RAW MODE ******************************************/
@@ -133,13 +136,12 @@ int drawscreen(){
 	
 	write(STDOUT, "\x1b[2J", 4); /* clear screen */
 	write(STDOUT, "\x1b[H", 3); /* move cursor home */
-	scrbufappend(&buf, "\r\n", 2);
 
 	int i=0;
 
 	frow *t = J.tsl; /* file row pointer */
 
-	for(; i < J.rowc; ++i){
+	for(; i < J.rowc-1; ++i){
 		if(t != NULL){
 			if(J.cx > J.colc && t == J.cline){
 
@@ -162,13 +164,24 @@ int drawscreen(){
 	freescrbuf(buf);
 
 	 /* draw cursor position wrapping x around screen */
-	snprintf(cpos, SCRDIMBYTES, "\x1b[%d;%dH", J.cy, ((J.cx+1)%J.colc));
+	snprintf(cpos, SCRDIMBYTES, "\x1b[%d;%dH", J.cy+1, ((J.cx+1)%J.colc));
 	write(STDOUT, cpos, strlen(cpos));
 
 	return 0;
 
 
 
+}
+
+void scroll(int direction){ /* general function to check if we need to scroll based on current y. If not we are free to increment 
+		      or decrement y as needed */
+	if(direction == UP){
+		if(J.cy == 0) J.tsl = J.tsl->pr;
+		else J.cy--;
+	} else if(direction == DOWN){
+		if(J.cy == J.rowc-2) J.tsl = J.tsl->nx;
+		else J.cy++;
+	}
 }
 
 /*********************************** KEYBOARD INPUT ***************************************/
@@ -185,40 +198,42 @@ void kbinput(){
 			switch(b){
 				case 'A': /* move up */
 				if(J.cline->pr != NULL){
-					if(J.cline->len > J.cline->pr->len) J.cx = J.cline->pr->len-1; /* snap to end of line if current is longer */
+					if(J.cline->len > J.cline->pr->len) J.cx = J.cline->pr->len; /* snap to end of line if current is longer */
 					J.cline = J.cline->pr;
-					if(J.cy == 0) J.tsl = J.tsl->pr; /* scroll window up one line */
-					else J.cy--; /* else move screen row index */
+					scroll(UP);
+					//if(J.cy == 0) J.tsl = J.tsl->pr; /* scroll window up one line */
+					//else J.cy--; /* else move screen row index */
 									
 				}
 				break;
 				case 'B': /* move down */
 				if(J.cline->nx != NULL){
-					if(J.cline->len > J.cline->nx->len) J.cx = J.cline->nx->len-1; /* snap to end of line if current is longer */
+					if(J.cline->len > J.cline->nx->len) J.cx = J.cline->nx->len; /* snap to end of line if current is longer */
 					J.cline = J.cline->nx;
-					if(J.cy == J.rowc-1) J.tsl = J.tsl->nx; /* scroll window down one line */
-					else J.cy++;
+					scroll(DOWN);
+					//if(J.cy == J.rowc-1) J.tsl = J.tsl->nx; /* scroll window down one line */
+					//else J.cy++;
 				}
 				break;
 				case 'C': /* move right */
 				if(J.cx == J.cline->len  && J.cline->nx != NULL){ /* move to next line */
 					J.cline = J.cline->nx;
-					if(J.cy == J.rowc-1) J.tsl = J.tsl->nx; /* scroll window down one line */
-					else J.cy++;
+					scroll(DOWN);
+					//if(J.cy == J.rowc-1) J.tsl = J.tsl->nx; /* scroll window down one line */
+					//else J.cy++;
 	
 					J.cx = 0; /* first index */
-					fprintf(stdout, "J.cx: %d\n",J.cx); 
 				} else if(J.cx < J.cline->len) {
-					fprintf(stdout, "J.cx: %d\n",J.cx); 
 					J.cx++;
 				}
 				break;
 				case 'D': /* move left */
 				if(J.cx == 0 && J.cline->pr != NULL){ /* move to prev line */
 					J.cline = J.cline->pr;
-					if(J.cy == 0) J.tsl = J.tsl->pr; /* scroll window up one line */
-					else J.cy--; /* else move screen row index */
-					J.cx = J.cline->len-1; /* last index */
+					scroll(UP);
+					//if(J.cy == 0) J.tsl = J.tsl->pr; /* scroll window up one line */
+					//else J.cy--; /* else move screen row index */
+					J.cx = J.cline->len; /* snap to end of line ready to insert chars */
 
 				} else if(J.cx > 0){
 				 J.cx--;
@@ -226,7 +241,7 @@ void kbinput(){
 				break;
 			
 				case 'F': /* end */
-					J.cx = J.cline->len-1;	
+					J.cx = J.cline->len;	
 				break;
 
 				case 'H': /* home */
@@ -243,6 +258,13 @@ void kbinput(){
 	} else if(b == BKSPC) { /* delete character or lines if used at beginning of line standard backspace stuff */
 		backspace();
 
+	} else if (b == ENTER){/* do enter things...*/
+		enter();
+		
+	
+	} else if(b == TAB){
+		insertchar(J.cline, '\t');
+		
 	} else if(b == QUIT){
 		 exitraw(STDIN);
 		 exit(0);
@@ -254,7 +276,7 @@ void kbinput(){
 
 
 void addline(void){
-	if(J.fline == NULL){ /* no lines yet */
+	if(J.fline == NULL){ /* general use function for adding line node to list */
 		frow *p = (frow *)malloc(sizeof(frow));	
 		p-> idx = 0;
 		p->nx = NULL;
@@ -278,23 +300,38 @@ void addline(void){
 		if(new->nx != NULL){
 			new->nx->pr = new;
 			frow *t=new;
-			while((t=t->nx) != NULL) t->idx++; /* increment line num of all lines aJ.fline of J.cline */
+			while((t=t->nx) != NULL) t->idx++; /* adjust index of everything in front */
 		}
 	}
 	return;
 
 }
 
+void deleteline(frow *line){ /* general use function for removing line node from list */
+	/* adjust index of everything in front */	
+	frow *t = line;
+	while((t = t->nx) != NULL) t->idx--;
+	if(line->pr == NULL){/*deleting head */
+		J.fline = line->nx;	
+	} else if(line->nx == NULL){ /* deleting tail */
+		line->pr->nx = NULL;
+	} else { /* deleting internal node */
+		line->pr->nx = line->nx;
+		line->nx->pr = line->pr;
+	}
+	free(line);
+}
 
 void enter(void){ /* used on for enter not a general function */
 	
 	if(J.fline == NULL){ /* no lines yet so add first line */	
 		addline();
 		J.cx = J.cy = 0;
-	} else if(J.cx == J.cline->len){ /* at end of a line so add a new one */
+	} else if(J.cx == J.cline->len-1){ /* at end of a line so add a new one */
 		addline();
 		J.cline = J.cline->nx;
-		J.cy++;
+		scroll(DOWN);
+		//J.cy++;
 		J.cx=0;
 		
 	} else { /* copy everything from cursor to end of line to new line inserted below then delete moved chars*/
@@ -303,17 +340,15 @@ void enter(void){ /* used on for enter not a general function */
 		for(i=t, J.cx=0; i < J.cline->len; ++i) insertchar(J.cline->nx, J.cline->s[i]); /* copy chars */
 		for(; --J.cline->len >= t; J.cline->s[J.cline->len] = 0); /* delete chars */
 		J.cline->len++; /* after loop len is value of last index. Should be one above index */
-
-	
+		J.cline = J.cline->nx;
+		scroll(DOWN);
+		//J.cy++;
+		J.cx=0;
 	}
 
+
 }
 
-void deleteline(frow *line){ /* removes line from list preserves no data like "dd" in vim */
-	line->pr->nx = line->nx;
-	line->nx->pr = line->pr;
-	free(line);
-}
 
 
 
@@ -337,7 +372,8 @@ void backspace(void){ /* not a generally useable function do not use out side of
 		}
 
 		J.cx = t;
-		J.cy--;
+		scroll(UP);
+		//J.cy--;
  	} else if(J.cline->len > 0 && J.cx > 0){
 		/* delete character behind cursor and move cursor back one and decrement line count by 1*/
 		for(int i=J.cx; i < J.cline->len; i++) J.cline->s[i-1] = J.cline->s[i];
@@ -357,8 +393,9 @@ void insertchar(frow *line, char c){
 		J.cx++;
 	} else {
 		int i=line->len; /* index of position beyond last char in str. Recall we have already ensured we have enough space */
-		while( i-- > J.cx){
+		while(i > J.cx){
 			line->s[i] = line->s[i-1]; 
+			i--;
 		}	
 		line->s[J.cx] = c;
 		line->len++;
@@ -383,12 +420,13 @@ int main()
 
 	enterraw(STDIN);
 	initeditor();
+	drawscreen();
 	
 	FILE *debug = fopen("debug.txt", "w");
 	int dlineno=1;
 
 
-	
+	/*
 	int i=100;
 	while(i--) addline();
 	while(J.cline->nx != NULL){ 
@@ -405,6 +443,7 @@ int main()
 	J.cline->s = s;
 	J.cline->len = strlen(s);
 	J.cline = J.fline;
+	*/
 	
 	while(1){
 		kbinput();
@@ -418,6 +457,7 @@ int main()
 		fprintf(debug, "cline contents: %s\n", J.cline->s);
 		fprintf(debug, "cline pr is null: %d\n", (J.cline->pr == NULL));
 		fprintf(debug, "cline nx is null: %d\n", (J.cline->nx == NULL));
+		fprintf(debug, "tsl is idx: %d\n", J.tsl->idx);
 		fflush(debug);
 		dlineno++;
 	}

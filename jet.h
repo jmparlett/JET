@@ -8,7 +8,12 @@
 /*******KEY CODES*******/
 enum editorkeys{
 	QUIT = 17, /* ctr-q */
-	BKSPC = 127 /* backspace */
+
+	BKSPC = 127, /* backspace */
+	
+	ENTER = 13,
+	
+	TAB = 9
 
 };
 

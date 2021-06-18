@@ -88,7 +88,9 @@ int main()
 	char c;
 	while(c != 'q'){
 		read(STDIN, &c, 1);
-		printf("%d (%c)\n\r",c,c);
+		if(c == 13) printf(" this is thirteen I guess %d (%c)\n\r",c,c);
+
+		else printf("%d (%c)\n\r",c,c);
 	}
 
 

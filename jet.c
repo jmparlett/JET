@@ -168,7 +168,7 @@ int drawscreen(){
 	freescrbuf(buf);
 
 	 /* draw cursor position wrapping x around screen */
-	snprintf(cpos, SCRDIMBYTES, "\x1b[%d;%dH", J.cy+1, ((J.cx+1)%J.colc) + taboffset);
+	snprintf(cpos, SCRDIMBYTES, "\x1b[%d;%dH", J.cy+1, ((J.cx+1)%J.colc)+taboffset);
 	write(STDOUT, cpos, strlen(cpos));
 
 	return 0;
@@ -400,13 +400,20 @@ void insertchar(frow *line, char c){
 
 }
 
-int taboff(char *s, int x){ /* calculate num of tabs in char array up to and including pos x */
-	int tc=0;
-	while(x--) if(*s++ == '\t') ++tc;
-	return (tc ? tc * TABSIZE : 0);
+
+int taboff(char *s, int x){ /* calculate tab offset for rendering cursor */
+	int f, i, t;
+	f = i = 0;
+	while(i < x){
+		if(s[i] == '\t'){
+			 t = i+1;
+			 while((t+f) % TABSIZE != 0 ) t++; /* dont forget %'s precedence*/
+			 f += t-(i+1);
+		}
+		i++;
+	}
+	return f;
 }
-
-
 
 
 

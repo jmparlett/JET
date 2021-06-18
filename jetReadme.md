@@ -1,4 +1,4 @@
-#JET Text Editor Project
+# JET Text Editor Project
 
 Screen buffer: Need a method to detect how many screens rows and screen columns. 
 
@@ -7,7 +7,7 @@ File buffer: Need a file/text buffer to read/write text from.
 Cursor: it should move between screen rows and columns. If at top or bottom of screen then next line should be pulled from file buffer and previous rows in frame buffer should be moved back.
 
 
-#Screen Buffer
+# Screen Buffer
 should be navigatable with an (x,y) system. Like a 2d array.
 
 screen buffer: based on position in file and number of rows a range of rows from the file will be written to STDOUT
@@ -19,73 +19,78 @@ screen buffer: based on position in file and number of rows a range of rows from
 				
 
 file buffer: contains all lines of file and is what will actually be edited. Upon saving filebuffer should be
-	     written to file.
-		
-	     Empty behavior: Upon typeing the input handleing function should create a new row and append it to
-			     the file buf.
-	
-	     file buf will be a linked list of row objects. Each row will contain a string of len col count.
-	     this will be doubled if they go beyond col count. Upon entering a newline "enter" a new node should
-	     added to the list. Upon deletion of a line that node will be removed and all nodes in front of it
-	     will have their index incremented by 1.	    
+written to file.
+
+Empty behavior: Upon typeing the input handleing function should create a new row and append it to
+	     the file buf.
+
+file buf will be a linked list of row objects. Each row will contain a string of len col count.
+this will be doubled if they go beyond col count. Upon entering a newline "enter" a new node should
+added to the list. Upon deletion of a line that node will be removed and all nodes in front of it
+will have their index incremented by 1.	    
 
 	drawscreen():
-storecursor position
-move cursor to home 
-starting at top line on screen draw to bottom line on screen
-set cursor to previous position
+		storecursor position
+		move cursor to home 
+		starting at top line on screen draw to bottom line on screen
+		set cursor to previous position
 
-Line truncation:
-	use a global var to tell what position to start drawing a line;
-	if x > then col count but < line len then this global is incremented 
-	when moving to a new line this can be set to 0 or we can start at x=line len and global var = line len
+	Line truncation:
+		use a global var to tell what position to start drawing a line;
+		if x > then col count but < line len then this global is incremented 
+		when moving to a new line this can be set to 0 or we can start at x=line len and global var = line len
 
-	for drawing starting at a certain position in the line if (global var + col count) > len of line then draw nothing
-	else draw (line ptr + (global var + col count)) which should be (len - (global var + col count))
+		for drawing starting at a certain position in the line if (global var + col count) > len of line then draw nothing
+		else draw (line ptr + (global var + col count)) which should be (len - (global var + col count))
 
 
 
-#Writing to lines
+# Writing to lines
 
 line->len must ALWAYS be accurate or shit will break!!!!
 
 1. inserting chars
-c = printable char
-s[x] = current position
-x = index
-if x+1 > len of line then len realloc(line, len+colc)
-given c, if s[x] is empty s[x] = c and x+=1, len+=1
-	if s[x] is not empty then insert c at pos x and push all chars forward in array
-	x+=1, len+=1
+	c = printable char
+	s[x] = current position
+	x = index
+	if x+1 > len of line then len realloc(line, len+colc)
+	given c, if s[x] is empty s[x] = c and x+=1, len+=1
+		if s[x] is not empty then insert c at pos x and push all chars forward in array
+		x+=1, len+=1
 
-2. backspace
-if x==0 and len == 0 then move to previous lines last char and remove current line from linked list.
+backspace
 
-elif x==0 them append line to previous line and remove line; move x to last char of new line.
+	if x==0 and len == 0 then move to previous lines last char and remove current line from linked list.
 
-else
-x-=1; len-=1; remove [s];
+	elif x==0 them append line to previous line and remove line; move x to last char of new line.
+
+	else
+	x-=1; len-=1; remove [s];
 
 first two cases will be handled by remove line backspace will simply callit
 
--delete
-similar behavior to backspace removes a line if x=len-1 (last position)
-else
-len-=1 remove s[x+1]
+ delete
+
+	similar behavior to backspace removes a line if x=len-1 (last position)
+	else
+	len-=1 remove s[x+1]
 
 
-3. enter
-if x-1 == len then add an empty line and position cursor at start of line
+enter
 
-else split the current line at position x, insert a new line below and copy right part of line to new line
+	if x-1 == len then add an empty line and position cursor at start of line
 
-addline() will handle these cases enter pretty much only calls addline
+	else split the current line at position x, insert a new line below and copy right part of line to new line
 
-4. tab how the fuck do you deal withs tabs :( whyyyyyyy.
+	addline() will handle these cases enter pretty much only calls addline
+
+tab 
+
+	how the fuck do you deal withs tabs :( whyyyyyyy.
 	taboff(): calculate tabs to the left of x and return an appropriate offset value (on my system tabs = 5 spaces)
 
 
-#Cursor
+# Cursor
 Cursor snapping will always snap to end of line ready to type
 
 how to move the cursor: 
@@ -114,7 +119,7 @@ how to move the cursor:
 				cl=cl->next
 
 
-#File buffer
+# File buffer
 1. Loading a file into the file rows liked list structure via args
 
 2. writeing the contents of the file rows structure to a file
@@ -125,7 +130,7 @@ how to move the cursor:
 
 
 
-#Beutifications
+# Beutifications
 
 1. line numbers
 
@@ -136,13 +141,10 @@ how to move the cursor:
 4. msg bar (at bottom displays prompts for saving files etc
 
 
-_______________Notes______________________
-rows 33, cols 120
 
 
 
-
-#Bugs
+# Bugs
 
 1. why is the last line not rendered? You can type on it but you cant see it.
 	it appears setting the limits of y to rowc-2 means we will always scroll appropriatly
@@ -157,8 +159,3 @@ what happens when the cursor in at zero on a n empty line
 
 need to hand case of removing last line in file (currently attempts to reference null pointer
 
-mon 8-12
-tues 7-11
-weds 8-12
-fri 8-12
-fri 8-1

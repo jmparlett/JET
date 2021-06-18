@@ -88,8 +88,14 @@ tab
 
 	how the fuck do you deal withs tabs :( whyyyyyyy.
 	taboff(): calculate tabs to the left of x and return an appropriate offset value (on my system tabs = 5 spaces)
+<<<<<<< HEAD
 	
 	for each tab in line we need to calculate its indexes distance from the next multiple of 8 ... so were gonna fake in a function
+=======
+	okay apparently we just dont do tabs because. Instead insert a certain amount of spaces to denote indentation. The
+	standard is 4. This means we dont need to calculate offset. 
+	However how do you decide what is a tab and what is 4 spaces for correct cursor behavior?
+>>>>>>> ec3e322ea1a26ac10b250bbfe5c6453932afdf6b
 
 
 # Cursor

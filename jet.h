@@ -2,7 +2,7 @@
  * 		DEFINES AND OTHER JUNK			*
  * ******************************************************/
 
-
+#define TABSIZE 8 /* number of spaces in a tab */
 
 
 /*******KEY CODES*******/
@@ -13,7 +13,8 @@ enum editorkeys{
 	
 	ENTER = 13,
 	
-	TAB = 9
+	TAB = 9,
+
 
 };
 

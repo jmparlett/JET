@@ -23,6 +23,7 @@ void insertchar(frow *, char);
 void removechar(frow *);
 void backspace(void);
 void enter(void);
+int taboff(char *, int);
 
 
 /**************************** RAW MODE ******************************************/
@@ -133,7 +134,8 @@ void freescrbuf(scrbuf buf){
 int drawscreen(){
 	scrbuf buf = {0, NULL};
 	
-	
+	int taboffset =	(J.cline != NULL ? taboff(J.cline->s, J.cx) : 0); /* calculate normal offset */	
+
 	write(STDOUT, "\x1b[2J", 4); /* clear screen */
 	write(STDOUT, "\x1b[H", 3); /* move cursor home */
 
@@ -143,10 +145,12 @@ int drawscreen(){
 
 	for(; i < J.rowc-1; ++i){
 		if(t != NULL){
-			if(J.cx > J.colc && t == J.cline){
-
+			if(J.cx > J.colc && t == J.cline){/* need to scroll a truncated line */
+				
 				int off = (J.cx / J.colc) * J.colc;
-
+			
+				taboffset = taboff(t->s+off, J.cx-off); /* need to recalculate tab offset if we are on a truncd line */
+				
 				scrbufappend(&buf, t->s+off, (t->len-off < J.colc ? t->len-off : J.colc));
 				scrbufappend(&buf, "\r\n", 2);
 
@@ -164,7 +168,7 @@ int drawscreen(){
 	freescrbuf(buf);
 
 	 /* draw cursor position wrapping x around screen */
-	snprintf(cpos, SCRDIMBYTES, "\x1b[%d;%dH", J.cy+1, ((J.cx+1)%J.colc));
+	snprintf(cpos, SCRDIMBYTES, "\x1b[%d;%dH", J.cy+1, ((J.cx+1)%J.colc) + taboffset);
 	write(STDOUT, cpos, strlen(cpos));
 
 	return 0;
@@ -201,8 +205,6 @@ void kbinput(){
 					if(J.cline->len > J.cline->pr->len) J.cx = J.cline->pr->len; /* snap to end of line if current is longer */
 					J.cline = J.cline->pr;
 					scroll(UP);
-					//if(J.cy == 0) J.tsl = J.tsl->pr; /* scroll window up one line */
-					//else J.cy--; /* else move screen row index */
 									
 				}
 				break;
@@ -211,16 +213,12 @@ void kbinput(){
 					if(J.cline->len > J.cline->nx->len) J.cx = J.cline->nx->len; /* snap to end of line if current is longer */
 					J.cline = J.cline->nx;
 					scroll(DOWN);
-					//if(J.cy == J.rowc-1) J.tsl = J.tsl->nx; /* scroll window down one line */
-					//else J.cy++;
 				}
 				break;
 				case 'C': /* move right */
 				if(J.cx == J.cline->len  && J.cline->nx != NULL){ /* move to next line */
 					J.cline = J.cline->nx;
 					scroll(DOWN);
-					//if(J.cy == J.rowc-1) J.tsl = J.tsl->nx; /* scroll window down one line */
-					//else J.cy++;
 	
 					J.cx = 0; /* first index */
 				} else if(J.cx < J.cline->len) {
@@ -231,8 +229,6 @@ void kbinput(){
 				if(J.cx == 0 && J.cline->pr != NULL){ /* move to prev line */
 					J.cline = J.cline->pr;
 					scroll(UP);
-					//if(J.cy == 0) J.tsl = J.tsl->pr; /* scroll window up one line */
-					//else J.cy--; /* else move screen row index */
 					J.cx = J.cline->len; /* snap to end of line ready to insert chars */
 
 				} else if(J.cx > 0){
@@ -272,7 +268,7 @@ void kbinput(){
 
 
 }
-/************************Writeing******************************/
+/************************Writing******************************/
 
 
 void addline(void){
@@ -404,7 +400,11 @@ void insertchar(frow *line, char c){
 
 }
 
-
+int taboff(char *s, int x){ /* calculate num of tabs in char array up to and including pos x */
+	int tc=0;
+	while(x--) if(*s++ == '\t') ++tc;
+	return (tc ? tc * TABSIZE : 0);
+}
 
 
 

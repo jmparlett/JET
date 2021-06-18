@@ -88,6 +88,8 @@ tab
 
 	how the fuck do you deal withs tabs :( whyyyyyyy.
 	taboff(): calculate tabs to the left of x and return an appropriate offset value (on my system tabs = 5 spaces)
+	
+	for each tab in line we need to calculate its indexes distance from the next multiple of 8 ... so were gonna fake in a function
 
 
 # Cursor

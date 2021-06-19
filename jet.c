@@ -14,9 +14,13 @@
 #define SCRDIMBYTES 100 /* used in kbinput() to capture cursor x and y as a string. Must be able to capture the max screen dimensions */
 #define UP 1000
 #define DOWN 1001
+
+
 static struct termios save_term; /* previous term settings */
 static int termsaved; /* status of function */
 char cpos[SCRDIMBYTES];  /* string used for cursor position */
+static editor J; /***** IMPORTANT!!! main editor obj *****/
+static char* cfname; /* name of current file */
 
 /*****PROTOS******/
 void insertchar(frow *, char);
@@ -24,6 +28,8 @@ void removechar(frow *);
 void backspace(void);
 void enter(void);
 int taboff(char *, int);
+int loadfile(char []);
+int savefile(char []);
 
 
 /**************************** RAW MODE ******************************************/
@@ -80,7 +86,6 @@ int getwindowsize(struct winsize winstruc){
 
 /********************************** Editor Structure *****************************/
 
-static editor J; /***** IMPORTANT!!! main editor obj *****/
 
 
 int initeditor(){
@@ -261,6 +266,9 @@ void kbinput(){
 	} else if(b == TAB){
 		insertchar(J.cline, '\t');
 		
+	} else if(b == SAVE){
+		savefile(cfname); /* save current file */
+	
 	} else if(b == QUIT){
 		 exitraw(STDIN);
 		 exit(0);
@@ -417,44 +425,78 @@ int taboff(char *s, int x){ /* calculate tab offset for rendering cursor */
 
 
 
+/**********************FILE MANAGEMENT*****************************/
+
+int loadfile(char fname[]){ /* to be called at the start of the program if a file name is passed as an argument */
+	FILE *fp;
+
+	if((fp = fopen(fname, "r")) == NULL) return -1;
+
+	int c;
+
+	addline();  /* add first line (this sets cline and fline as well) */
+
+	while((c = fgetc(fp)) != EOF){
+	
+		if(c == '\n'){
+			J.cx = 0;
+			addline();
+			J.cline = J.cline->nx;
+
+		} else {
+			insertchar(J.cline, c);
+		}	
+
+	}
+
+	J.cline = J.tsl = J.fline;
+	
+	fclose(fp);
+
+	return 0;
+}
 
 
+int savefile(char fname[]){
+	
+	FILE *fp;
 
+	if((fp = fopen(fname, "w")) == NULL) return -1;
 
+	frow *t = J.fline; /* start at top of file */
 
-int main()
+	while(t != NULL){
+
+		for(int i=0; i < t->len; ++i) fputc(t->s[i], fp);
+		fputc('\n',fp);
+		t = t->nx;
+	}
+
+	return 0;
+
+	
+
+}
+
+int main(int argc, char *argv[])
 {
-
+	/* enter raw and initialize the editor */
 	enterraw(STDIN);
 	initeditor();
-	drawscreen();
+
+	if(argc > 1){ /* attempt to open a file and read it into the editor */
+		loadfile((cfname = *++argv));		
+	}	
 	
 	FILE *debug = fopen("debug.txt", "w");
 	int dlineno=1;
 
 
-	/*
-	int i=100;
-	while(i--) addline();
-	while(J.cline->nx != NULL){ 
-		char s[10]; snprintf(s,10,"%d", J.cline->idx);
-		strcpy(J.cline->s, s);
-		J.cline->len = strlen(s);
-		
-		J.cline=J.cline->nx;
-	}
-	J.cline = J.fline;
-	while((J.cline = J.cline->nx)->idx < 10);
-
-	char s[1000] = "123456789101112131415161718192021222324252627282930313233343536373839404142431234567891011121314151617181920212223242526272829303132333435363738394041424312345678910111213141516171819202122232425262728293031323334353637383940414243";
-	J.cline->s = s;
-	J.cline->len = strlen(s);
-	J.cline = J.fline;
-	*/
+	
 	
 	while(1){
-		kbinput();
 		drawscreen();
+		kbinput();
 //		fprintf(stderr, cpos+1);
 //		fprintf(stderr, "\nJ.cx, J.cy %d,%d", J.cx,J.cy);
 		fprintf(debug, "\n--------%d---------\n", dlineno);

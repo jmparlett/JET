@@ -1,14 +1,5 @@
 
 --------1---------
-J.cx, J.cy 0,0
-cline idx: 0
-cline len: 0
-cline contents: 
-cline pr is null: 1
-cline nx is null: 1
-tsl is idx: 0
-
---------2---------
 J.cx, J.cy 0,1
 cline idx: 1
 cline len: 0
@@ -17,2612 +8,758 @@ cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
---------3---------
-J.cx, J.cy 0,2
-cline idx: 2
-cline len: 0
-cline contents: 
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------4---------
-J.cx, J.cy 0,3
-cline idx: 3
-cline len: 0
-cline contents: 
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------5---------
-J.cx, J.cy 1,3
-cline idx: 3
+--------2---------
+J.cx, J.cy 1,1
+cline idx: 1
 cline len: 1
 cline contents: t
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
---------6---------
-J.cx, J.cy 2,3
-cline idx: 3
+--------3---------
+J.cx, J.cy 2,1
+cline idx: 1
 cline len: 2
 cline contents: th
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
---------7---------
-J.cx, J.cy 3,3
-cline idx: 3
+--------4---------
+J.cx, J.cy 3,1
+cline idx: 1
 cline len: 3
 cline contents: thi
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
---------8---------
-J.cx, J.cy 4,3
-cline idx: 3
+--------5---------
+J.cx, J.cy 4,1
+cline idx: 1
 cline len: 4
 cline contents: this
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
---------9---------
-J.cx, J.cy 5,3
-cline idx: 3
+--------6---------
+J.cx, J.cy 5,1
+cline idx: 1
 cline len: 5
 cline contents: this 
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
---------10---------
-J.cx, J.cy 6,3
-cline idx: 3
+--------7---------
+J.cx, J.cy 6,1
+cline idx: 1
 cline len: 6
-cline contents: this w
+cline contents: this g
+cline pr is null: 0
+cline nx is null: 1
+tsl is idx: 0
+
+--------8---------
+J.cx, J.cy 7,1
+cline idx: 1
+cline len: 7
+cline contents: this ga
+cline pr is null: 0
+cline nx is null: 1
+tsl is idx: 0
+
+--------9---------
+J.cx, J.cy 8,1
+cline idx: 1
+cline len: 8
+cline contents: this gar
+cline pr is null: 0
+cline nx is null: 1
+tsl is idx: 0
+
+--------10---------
+J.cx, J.cy 9,1
+cline idx: 1
+cline len: 9
+cline contents: this garg
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------11---------
-J.cx, J.cy 7,3
-cline idx: 3
-cline len: 7
-cline contents: this wo
+J.cx, J.cy 8,1
+cline idx: 1
+cline len: 8
+cline contents: this garg
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------12---------
-J.cx, J.cy 8,3
-cline idx: 3
-cline len: 8
-cline contents: this wor
+J.cx, J.cy 9,1
+cline idx: 1
+cline len: 9
+cline contents: this garb
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------13---------
-J.cx, J.cy 9,3
-cline idx: 3
-cline len: 9
-cline contents: this work
+J.cx, J.cy 10,1
+cline idx: 1
+cline len: 10
+cline contents: this garba
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------14---------
-J.cx, J.cy 10,3
-cline idx: 3
-cline len: 10
-cline contents: this works
+J.cx, J.cy 11,1
+cline idx: 1
+cline len: 11
+cline contents: this garbag
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------15---------
-J.cx, J.cy 11,3
-cline idx: 3
-cline len: 11
-cline contents: this works 
+J.cx, J.cy 12,1
+cline idx: 1
+cline len: 12
+cline contents: this garbage
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------16---------
-J.cx, J.cy 12,3
-cline idx: 3
-cline len: 12
-cline contents: this works a
+J.cx, J.cy 13,1
+cline idx: 1
+cline len: 13
+cline contents: this garbage 
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------17---------
-J.cx, J.cy 13,3
-cline idx: 3
-cline len: 13
-cline contents: this works an
+J.cx, J.cy 14,1
+cline idx: 1
+cline len: 14
+cline contents: this garbage g
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------18---------
-J.cx, J.cy 14,3
-cline idx: 3
-cline len: 14
-cline contents: this works and
+J.cx, J.cy 15,1
+cline idx: 1
+cline len: 15
+cline contents: this garbage gf
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------19---------
-J.cx, J.cy 15,3
-cline idx: 3
-cline len: 15
-cline contents: this works and 
+J.cx, J.cy 16,1
+cline idx: 1
+cline len: 16
+cline contents: this garbage gfi
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------20---------
-J.cx, J.cy 16,3
-cline idx: 3
-cline len: 16
-cline contents: this works and t
+J.cx, J.cy 15,1
+cline idx: 1
+cline len: 15
+cline contents: this garbage gfi
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------21---------
-J.cx, J.cy 17,3
-cline idx: 3
-cline len: 17
-cline contents: this works and th
+J.cx, J.cy 14,1
+cline idx: 1
+cline len: 14
+cline contents: this garbage gfi
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------22---------
-J.cx, J.cy 18,3
-cline idx: 3
-cline len: 18
-cline contents: this works and tha
+J.cx, J.cy 13,1
+cline idx: 1
+cline len: 13
+cline contents: this garbage gfi
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------23---------
-J.cx, J.cy 19,3
-cline idx: 3
-cline len: 19
-cline contents: this works and that
+J.cx, J.cy 14,1
+cline idx: 1
+cline len: 14
+cline contents: this garbage ffi
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------24---------
-J.cx, J.cy 20,3
-cline idx: 3
-cline len: 20
-cline contents: this works and thats
+J.cx, J.cy 15,1
+cline idx: 1
+cline len: 15
+cline contents: this garbage fii
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------25---------
-J.cx, J.cy 21,3
-cline idx: 3
-cline len: 21
-cline contents: this works and thats 
+J.cx, J.cy 16,1
+cline idx: 1
+cline len: 16
+cline contents: this garbage fil
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------26---------
-J.cx, J.cy 22,3
-cline idx: 3
-cline len: 22
-cline contents: this works and thats g
+J.cx, J.cy 17,1
+cline idx: 1
+cline len: 17
+cline contents: this garbage file
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------27---------
-J.cx, J.cy 23,3
-cline idx: 3
-cline len: 23
-cline contents: this works and thats gr
+J.cx, J.cy 18,1
+cline idx: 1
+cline len: 18
+cline contents: this garbage file 
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------28---------
-J.cx, J.cy 24,3
-cline idx: 3
-cline len: 24
-cline contents: this works and thats gre
+J.cx, J.cy 19,1
+cline idx: 1
+cline len: 19
+cline contents: this garbage file i
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------29---------
-J.cx, J.cy 25,3
-cline idx: 3
-cline len: 25
-cline contents: this works and thats grea
+J.cx, J.cy 20,1
+cline idx: 1
+cline len: 20
+cline contents: this garbage file is
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------30---------
-J.cx, J.cy 26,3
-cline idx: 3
-cline len: 26
-cline contents: this works and thats great
+J.cx, J.cy 21,1
+cline idx: 1
+cline len: 21
+cline contents: this garbage file is 
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------31---------
-J.cx, J.cy 27,3
-cline idx: 3
-cline len: 27
-cline contents: this works and thats great	
+J.cx, J.cy 22,1
+cline idx: 1
+cline len: 22
+cline contents: this garbage file is f
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------32---------
-J.cx, J.cy 28,3
-cline idx: 3
-cline len: 28
-cline contents: this works and thats great		
+J.cx, J.cy 23,1
+cline idx: 1
+cline len: 23
+cline contents: this garbage file is fu
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------33---------
-J.cx, J.cy 29,3
-cline idx: 3
-cline len: 29
-cline contents: this works and thats great			
+J.cx, J.cy 24,1
+cline idx: 1
+cline len: 24
+cline contents: this garbage file is ful
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------34---------
-J.cx, J.cy 0,4
-cline idx: 4
-cline len: 0
-cline contents: 
+J.cx, J.cy 25,1
+cline idx: 1
+cline len: 25
+cline contents: this garbage file is full
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------35---------
-J.cx, J.cy 1,4
-cline idx: 4
-cline len: 1
-cline contents: 	
+J.cx, J.cy 26,1
+cline idx: 1
+cline len: 26
+cline contents: this garbage file is full 
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------36---------
-J.cx, J.cy 2,4
-cline idx: 4
-cline len: 2
-cline contents: 		
+J.cx, J.cy 27,1
+cline idx: 1
+cline len: 27
+cline contents: this garbage file is full o
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------37---------
-J.cx, J.cy 0,5
-cline idx: 5
-cline len: 0
-cline contents: 
+J.cx, J.cy 28,1
+cline idx: 1
+cline len: 28
+cline contents: this garbage file is full of
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------38---------
-J.cx, J.cy 1,5
-cline idx: 5
-cline len: 1
-cline contents: 	
+J.cx, J.cy 29,1
+cline idx: 1
+cline len: 29
+cline contents: this garbage file is full of 
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------39---------
-J.cx, J.cy 2,5
-cline idx: 5
-cline len: 2
-cline contents: 		
+J.cx, J.cy 30,1
+cline idx: 1
+cline len: 30
+cline contents: this garbage file is full of g
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------40---------
-J.cx, J.cy 0,6
-cline idx: 6
-cline len: 0
-cline contents: 
+J.cx, J.cy 31,1
+cline idx: 1
+cline len: 31
+cline contents: this garbage file is full of ga
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------41---------
-J.cx, J.cy 1,6
-cline idx: 6
-cline len: 1
-cline contents: 	
+J.cx, J.cy 32,1
+cline idx: 1
+cline len: 32
+cline contents: this garbage file is full of gar
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------42---------
-J.cx, J.cy 0,7
-cline idx: 7
-cline len: 0
-cline contents: 
+J.cx, J.cy 33,1
+cline idx: 1
+cline len: 33
+cline contents: this garbage file is full of garb
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------43---------
-J.cx, J.cy 1,7
-cline idx: 7
-cline len: 1
-cline contents: 	
+J.cx, J.cy 34,1
+cline idx: 1
+cline len: 34
+cline contents: this garbage file is full of garba
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------44---------
-J.cx, J.cy 0,8
-cline idx: 8
-cline len: 0
-cline contents: 
+J.cx, J.cy 35,1
+cline idx: 1
+cline len: 35
+cline contents: this garbage file is full of garbag
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------45---------
-J.cx, J.cy 1,8
-cline idx: 8
-cline len: 1
-cline contents: 	
+J.cx, J.cy 36,1
+cline idx: 1
+cline len: 36
+cline contents: this garbage file is full of garbage
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------46---------
-J.cx, J.cy 2,8
-cline idx: 8
-cline len: 2
-cline contents: 		
+J.cx, J.cy 0,2
+cline idx: 2
+cline len: 0
+cline contents: 
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------47---------
-J.cx, J.cy 0,9
-cline idx: 9
-cline len: 0
-cline contents: 
+J.cx, J.cy 1,2
+cline idx: 2
+cline len: 1
+cline contents: 	
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------48---------
-J.cx, J.cy 1,9
-cline idx: 9
-cline len: 1
-cline contents: 	
+J.cx, J.cy 2,2
+cline idx: 2
+cline len: 2
+cline contents: 	a
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------49---------
-J.cx, J.cy 2,9
-cline idx: 9
-cline len: 2
-cline contents: 		
+J.cx, J.cy 3,2
+cline idx: 2
+cline len: 3
+cline contents: 	an
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------50---------
-J.cx, J.cy 0,10
-cline idx: 10
-cline len: 0
-cline contents: 
+J.cx, J.cy 4,2
+cline idx: 2
+cline len: 4
+cline contents: 	and
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------51---------
-J.cx, J.cy 1,10
-cline idx: 10
-cline len: 1
-cline contents: 	
+J.cx, J.cy 0,3
+cline idx: 3
+cline len: 0
+cline contents: 
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------52---------
-J.cx, J.cy 0,11
-cline idx: 11
-cline len: 0
-cline contents: 
+J.cx, J.cy 1,3
+cline idx: 3
+cline len: 1
+cline contents: 	
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------53---------
-J.cx, J.cy 1,11
-cline idx: 11
-cline len: 1
-cline contents: 	
+J.cx, J.cy 2,3
+cline idx: 3
+cline len: 2
+cline contents: 		
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------54---------
-J.cx, J.cy 2,11
-cline idx: 11
-cline len: 2
-cline contents: 		
+J.cx, J.cy 3,3
+cline idx: 3
+cline len: 3
+cline contents: 		t
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------55---------
-J.cx, J.cy 0,12
-cline idx: 12
-cline len: 0
-cline contents: 
+J.cx, J.cy 4,3
+cline idx: 3
+cline len: 4
+cline contents: 		ta
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------56---------
-J.cx, J.cy 1,12
-cline idx: 12
-cline len: 1
-cline contents: 	
+J.cx, J.cy 5,3
+cline idx: 3
+cline len: 5
+cline contents: 		tab
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------57---------
-J.cx, J.cy 0,13
-cline idx: 13
-cline len: 0
-cline contents: 
+J.cx, J.cy 6,3
+cline idx: 3
+cline len: 6
+cline contents: 		tabs
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------58---------
-J.cx, J.cy 1,13
-cline idx: 13
-cline len: 1
-cline contents: 	
+J.cx, J.cy 0,4
+cline idx: 4
+cline len: 0
+cline contents: 
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------59---------
-J.cx, J.cy 0,14
-cline idx: 14
-cline len: 0
-cline contents: 
+J.cx, J.cy 1,4
+cline idx: 4
+cline len: 1
+cline contents: 	
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------60---------
-J.cx, J.cy 0,14
-cline idx: 14
-cline len: 0
-cline contents: 
+J.cx, J.cy 2,4
+cline idx: 4
+cline len: 2
+cline contents: 		
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------61---------
-J.cx, J.cy 1,14
-cline idx: 14
-cline len: 1
-cline contents: ;
+J.cx, J.cy 3,4
+cline idx: 4
+cline len: 3
+cline contents: 			
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------62---------
-J.cx, J.cy 2,14
-cline idx: 14
-cline len: 2
-cline contents: ;2
+J.cx, J.cy 4,4
+cline idx: 4
+cline len: 4
+cline contents: 			l
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------63---------
-J.cx, J.cy 3,14
-cline idx: 14
-cline len: 3
-cline contents: ;2A
+J.cx, J.cy 5,4
+cline idx: 4
+cline len: 5
+cline contents: 			lo
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0
 
 --------64---------
-J.cx, J.cy 1,13
-cline idx: 13
-cline len: 1
-cline contents: 	
+J.cx, J.cy 6,4
+cline idx: 4
+cline len: 6
+cline contents: 			lot
 cline pr is null: 0
-cline nx is null: 0
+cline nx is null: 1
 tsl is idx: 0
 
 --------65---------
-J.cx, J.cy 1,12
-cline idx: 12
-cline len: 1
-cline contents: 	
+J.cx, J.cy 7,4
+cline idx: 4
+cline len: 7
+cline contents: 			lots
 cline pr is null: 0
-cline nx is null: 0
+cline nx is null: 1
 tsl is idx: 0
 
 --------66---------
-J.cx, J.cy 1,11
-cline idx: 11
-cline len: 2
-cline contents: 		
+J.cx, J.cy 0,5
+cline idx: 5
+cline len: 0
+cline contents: 
 cline pr is null: 0
-cline nx is null: 0
+cline nx is null: 1
 tsl is idx: 0
 
 --------67---------
-J.cx, J.cy 1,10
-cline idx: 10
+J.cx, J.cy 1,5
+cline idx: 5
 cline len: 1
 cline contents: 	
 cline pr is null: 0
-cline nx is null: 0
+cline nx is null: 1
 tsl is idx: 0
 
 --------68---------
-J.cx, J.cy 1,9
-cline idx: 9
+J.cx, J.cy 2,5
+cline idx: 5
 cline len: 2
 cline contents: 		
 cline pr is null: 0
-cline nx is null: 0
+cline nx is null: 1
 tsl is idx: 0
 
 --------69---------
-J.cx, J.cy 1,8
-cline idx: 8
-cline len: 2
-cline contents: 		
+J.cx, J.cy 3,5
+cline idx: 5
+cline len: 3
+cline contents: 			
 cline pr is null: 0
-cline nx is null: 0
+cline nx is null: 1
 tsl is idx: 0
 
 --------70---------
-J.cx, J.cy 1,7
-cline idx: 7
-cline len: 1
-cline contents: 	
+J.cx, J.cy 4,5
+cline idx: 5
+cline len: 4
+cline contents: 				
 cline pr is null: 0
-cline nx is null: 0
+cline nx is null: 1
 tsl is idx: 0
 
 --------71---------
-J.cx, J.cy 1,6
-cline idx: 6
-cline len: 1
-cline contents: 	
+J.cx, J.cy 5,5
+cline idx: 5
+cline len: 5
+cline contents: 				o
 cline pr is null: 0
-cline nx is null: 0
+cline nx is null: 1
 tsl is idx: 0
 
 --------72---------
-J.cx, J.cy 1,5
+J.cx, J.cy 6,5
 cline idx: 5
-cline len: 2
-cline contents: 		
+cline len: 6
+cline contents: 				of
 cline pr is null: 0
-cline nx is null: 0
+cline nx is null: 1
 tsl is idx: 0
 
 --------73---------
-J.cx, J.cy 1,4
-cline idx: 4
-cline len: 2
-cline contents: 		
+J.cx, J.cy 0,6
+cline idx: 6
+cline len: 0
+cline contents: 
 cline pr is null: 0
-cline nx is null: 0
+cline nx is null: 1
 tsl is idx: 0
 
 --------74---------
-J.cx, J.cy 1,3
-cline idx: 3
-cline len: 29
-cline contents: this works and thats great			
+J.cx, J.cy 1,6
+cline idx: 6
+cline len: 1
+cline contents: 	
 cline pr is null: 0
-cline nx is null: 0
+cline nx is null: 1
 tsl is idx: 0
 
 --------75---------
-J.cx, J.cy 0,2
-cline idx: 2
-cline len: 0
-cline contents: 
+J.cx, J.cy 2,6
+cline idx: 6
+cline len: 2
+cline contents: 		
 cline pr is null: 0
-cline nx is null: 0
+cline nx is null: 1
 tsl is idx: 0
 
 --------76---------
-J.cx, J.cy 0,1
-cline idx: 1
-cline len: 0
-cline contents: 
+J.cx, J.cy 3,6
+cline idx: 6
+cline len: 3
+cline contents: 			
 cline pr is null: 0
-cline nx is null: 0
+cline nx is null: 1
 tsl is idx: 0
 
 --------77---------
-J.cx, J.cy 0,2
-cline idx: 2
-cline len: 0
-cline contents: 
+J.cx, J.cy 4,6
+cline idx: 6
+cline len: 4
+cline contents: 				
 cline pr is null: 0
-cline nx is null: 0
+cline nx is null: 1
 tsl is idx: 0
 
 --------78---------
-J.cx, J.cy 0,3
-cline idx: 3
-cline len: 29
-cline contents: this works and thats great			
+J.cx, J.cy 5,6
+cline idx: 6
+cline len: 5
+cline contents: 					
 cline pr is null: 0
-cline nx is null: 0
+cline nx is null: 1
 tsl is idx: 0
 
 --------79---------
-J.cx, J.cy 1,3
-cline idx: 3
-cline len: 29
-cline contents: this works and thats great			
+J.cx, J.cy 6,6
+cline idx: 6
+cline len: 6
+cline contents: 					t
 cline pr is null: 0
-cline nx is null: 0
+cline nx is null: 1
 tsl is idx: 0
 
 --------80---------
-J.cx, J.cy 2,4
-cline idx: 4
-cline len: 2
-cline contents: 		
+J.cx, J.cy 7,6
+cline idx: 6
+cline len: 7
+cline contents: 					ta
 cline pr is null: 0
-cline nx is null: 0
+cline nx is null: 1
 tsl is idx: 0
 
 --------81---------
-J.cx, J.cy 0,5
-cline idx: 5
-cline len: 2
-cline contents: 		
+J.cx, J.cy 8,6
+cline idx: 6
+cline len: 8
+cline contents: 					tab
 cline pr is null: 0
-cline nx is null: 0
+cline nx is null: 1
 tsl is idx: 0
 
 --------82---------
-J.cx, J.cy 1,5
-cline idx: 5
-cline len: 2
-cline contents: 		
+J.cx, J.cy 9,6
+cline idx: 6
+cline len: 9
+cline contents: 					tabs
 cline pr is null: 0
-cline nx is null: 0
+cline nx is null: 1
 tsl is idx: 0
 
 --------83---------
-J.cx, J.cy 2,5
-cline idx: 5
-cline len: 2
-cline contents: 		
+J.cx, J.cy 9,6
+cline idx: 6
+cline len: 9
+cline contents: 					tabs
 cline pr is null: 0
-cline nx is null: 0
+cline nx is null: 1
 tsl is idx: 0
 
 --------84---------
-J.cx, J.cy 0,6
+J.cx, J.cy 9,6
 cline idx: 6
-cline len: 1
-cline contents: 	
+cline len: 9
+cline contents: 					tabs
 cline pr is null: 0
-cline nx is null: 0
+cline nx is null: 1
 tsl is idx: 0
 
 --------85---------
-J.cx, J.cy 1,6
+J.cx, J.cy 9,6
 cline idx: 6
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------86---------
-J.cx, J.cy 0,7
-cline idx: 7
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------87---------
-J.cx, J.cy 1,7
-cline idx: 7
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------88---------
-J.cx, J.cy 0,8
-cline idx: 8
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------89---------
-J.cx, J.cy 1,8
-cline idx: 8
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------90---------
-J.cx, J.cy 2,8
-cline idx: 8
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------91---------
-J.cx, J.cy 0,9
-cline idx: 9
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------92---------
-J.cx, J.cy 1,9
-cline idx: 9
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------93---------
-J.cx, J.cy 2,9
-cline idx: 9
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------94---------
-J.cx, J.cy 0,10
-cline idx: 10
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------95---------
-J.cx, J.cy 1,10
-cline idx: 10
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------96---------
-J.cx, J.cy 0,11
-cline idx: 11
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------97---------
-J.cx, J.cy 1,11
-cline idx: 11
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------98---------
-J.cx, J.cy 2,11
-cline idx: 11
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------99---------
-J.cx, J.cy 0,12
-cline idx: 12
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------100---------
-J.cx, J.cy 1,12
-cline idx: 12
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------101---------
-J.cx, J.cy 0,13
-cline idx: 13
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------102---------
-J.cx, J.cy 1,13
-cline idx: 13
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------103---------
-J.cx, J.cy 0,14
-cline idx: 14
-cline len: 3
-cline contents: ;2A
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------104---------
-J.cx, J.cy 1,14
-cline idx: 14
-cline len: 3
-cline contents: ;2A
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------105---------
-J.cx, J.cy 2,14
-cline idx: 14
-cline len: 3
-cline contents: ;2A
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------106---------
-J.cx, J.cy 1,14
-cline idx: 14
-cline len: 3
-cline contents: ;2A
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------107---------
-J.cx, J.cy 0,14
-cline idx: 14
-cline len: 3
-cline contents: ;2A
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------108---------
-J.cx, J.cy 1,13
-cline idx: 13
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------109---------
-J.cx, J.cy 2,13
-cline idx: 13
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------110---------
-J.cx, J.cy 0,14
-cline idx: 14
-cline len: 3
-cline contents: ;2A
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------111---------
-J.cx, J.cy 2,13
-cline idx: 13
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------112---------
-J.cx, J.cy 1,12
-cline idx: 12
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------113---------
-J.cx, J.cy 1,11
-cline idx: 11
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------114---------
-J.cx, J.cy 1,10
-cline idx: 10
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------115---------
-J.cx, J.cy 1,9
-cline idx: 9
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------116---------
-J.cx, J.cy 2,9
-cline idx: 9
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------117---------
-J.cx, J.cy 0,10
-cline idx: 10
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------118---------
-J.cx, J.cy 1,10
-cline idx: 10
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------119---------
-J.cx, J.cy 0,11
-cline idx: 11
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------120---------
-J.cx, J.cy 1,11
-cline idx: 11
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------121---------
-J.cx, J.cy 2,11
-cline idx: 11
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------122---------
-J.cx, J.cy 0,12
-cline idx: 12
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------123---------
-J.cx, J.cy 1,12
-cline idx: 12
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------124---------
-J.cx, J.cy 0,13
-cline idx: 13
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------125---------
-J.cx, J.cy 1,13
-cline idx: 13
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------126---------
-J.cx, J.cy 2,13
-cline idx: 13
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------127---------
-J.cx, J.cy 0,14
-cline idx: 14
-cline len: 3
-cline contents: ;2A
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------128---------
-J.cx, J.cy 1,14
-cline idx: 14
-cline len: 3
-cline contents: ;2A
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------129---------
-J.cx, J.cy 2,14
-cline idx: 14
-cline len: 3
-cline contents: ;2A
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------130---------
-J.cx, J.cy 3,14
-cline idx: 14
-cline len: 3
-cline contents: ;2A
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------131---------
-J.cx, J.cy 3,14
-cline idx: 14
-cline len: 3
-cline contents: ;2A
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------132---------
-J.cx, J.cy 2,14
-cline idx: 14
-cline len: 3
-cline contents: ;2A
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------133---------
-J.cx, J.cy 1,14
-cline idx: 14
-cline len: 3
-cline contents: ;2A
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------134---------
-J.cx, J.cy 0,14
-cline idx: 14
-cline len: 3
-cline contents: ;2A
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------135---------
-J.cx, J.cy 2,13
-cline idx: 13
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------136---------
-J.cx, J.cy 1,13
-cline idx: 13
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------137---------
-J.cx, J.cy 0,13
-cline idx: 13
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------138---------
-J.cx, J.cy 1,12
-cline idx: 12
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------139---------
-J.cx, J.cy 0,12
-cline idx: 12
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------140---------
-J.cx, J.cy 2,11
-cline idx: 11
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------141---------
-J.cx, J.cy 1,11
-cline idx: 11
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------142---------
-J.cx, J.cy 0,11
-cline idx: 11
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------143---------
-J.cx, J.cy 1,10
-cline idx: 10
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------144---------
-J.cx, J.cy 0,10
-cline idx: 10
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------145---------
-J.cx, J.cy 2,9
-cline idx: 9
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------146---------
-J.cx, J.cy 1,9
-cline idx: 9
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------147---------
-J.cx, J.cy 0,9
-cline idx: 9
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------148---------
-J.cx, J.cy 2,8
-cline idx: 8
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------149---------
-J.cx, J.cy 1,8
-cline idx: 8
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------150---------
-J.cx, J.cy 0,8
-cline idx: 8
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------151---------
-J.cx, J.cy 1,7
-cline idx: 7
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------152---------
-J.cx, J.cy 0,7
-cline idx: 7
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------153---------
-J.cx, J.cy 1,6
-cline idx: 6
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------154---------
-J.cx, J.cy 0,6
-cline idx: 6
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------155---------
-J.cx, J.cy 2,5
-cline idx: 5
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------156---------
-J.cx, J.cy 1,5
-cline idx: 5
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------157---------
-J.cx, J.cy 0,5
-cline idx: 5
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------158---------
-J.cx, J.cy 2,4
-cline idx: 4
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------159---------
-J.cx, J.cy 1,4
-cline idx: 4
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------160---------
-J.cx, J.cy 0,4
-cline idx: 4
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------161---------
-J.cx, J.cy 29,3
-cline idx: 3
-cline len: 29
-cline contents: this works and thats great			
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------162---------
-J.cx, J.cy 28,3
-cline idx: 3
-cline len: 29
-cline contents: this works and thats great			
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------163---------
-J.cx, J.cy 27,3
-cline idx: 3
-cline len: 29
-cline contents: this works and thats great			
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------164---------
-J.cx, J.cy 26,3
-cline idx: 3
-cline len: 29
-cline contents: this works and thats great			
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------165---------
-J.cx, J.cy 25,3
-cline idx: 3
-cline len: 29
-cline contents: this works and thats great			
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------166---------
-J.cx, J.cy 24,3
-cline idx: 3
-cline len: 29
-cline contents: this works and thats great			
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------167---------
-J.cx, J.cy 25,3
-cline idx: 3
-cline len: 29
-cline contents: this works and thats great			
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------168---------
-J.cx, J.cy 26,3
-cline idx: 3
-cline len: 29
-cline contents: this works and thats great			
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------169---------
-J.cx, J.cy 27,3
-cline idx: 3
-cline len: 29
-cline contents: this works and thats great			
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------170---------
-J.cx, J.cy 28,3
-cline idx: 3
-cline len: 29
-cline contents: this works and thats great			
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------171---------
-J.cx, J.cy 29,3
-cline idx: 3
-cline len: 29
-cline contents: this works and thats great			
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------172---------
-J.cx, J.cy 0,4
-cline idx: 4
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------173---------
-J.cx, J.cy 1,4
-cline idx: 4
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------174---------
-J.cx, J.cy 2,4
-cline idx: 4
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------175---------
-J.cx, J.cy 0,5
-cline idx: 5
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------176---------
-J.cx, J.cy 1,5
-cline idx: 5
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------177---------
-J.cx, J.cy 2,5
-cline idx: 5
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------178---------
-J.cx, J.cy 0,6
-cline idx: 6
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------179---------
-J.cx, J.cy 1,6
-cline idx: 6
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------180---------
-J.cx, J.cy 0,7
-cline idx: 7
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------181---------
-J.cx, J.cy 1,7
-cline idx: 7
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------182---------
-J.cx, J.cy 0,8
-cline idx: 8
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------183---------
-J.cx, J.cy 1,8
-cline idx: 8
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------184---------
-J.cx, J.cy 2,8
-cline idx: 8
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------185---------
-J.cx, J.cy 0,9
-cline idx: 9
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------186---------
-J.cx, J.cy 1,9
-cline idx: 9
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------187---------
-J.cx, J.cy 2,9
-cline idx: 9
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------188---------
-J.cx, J.cy 0,10
-cline idx: 10
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------189---------
-J.cx, J.cy 1,10
-cline idx: 10
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------190---------
-J.cx, J.cy 0,11
-cline idx: 11
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------191---------
-J.cx, J.cy 1,11
-cline idx: 11
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------192---------
-J.cx, J.cy 2,11
-cline idx: 11
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------193---------
-J.cx, J.cy 0,12
-cline idx: 12
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------194---------
-J.cx, J.cy 1,12
-cline idx: 12
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------195---------
-J.cx, J.cy 0,13
-cline idx: 13
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------196---------
-J.cx, J.cy 1,13
-cline idx: 13
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------197---------
-J.cx, J.cy 2,13
-cline idx: 13
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------198---------
-J.cx, J.cy 0,14
-cline idx: 14
-cline len: 3
-cline contents: ;2A
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------199---------
-J.cx, J.cy 1,14
-cline idx: 14
-cline len: 3
-cline contents: ;2A
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------200---------
-J.cx, J.cy 0,14
-cline idx: 14
-cline len: 3
-cline contents: ;2A
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------201---------
-J.cx, J.cy 2,13
-cline idx: 13
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------202---------
-J.cx, J.cy 1,13
-cline idx: 13
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------203---------
-J.cx, J.cy 0,13
-cline idx: 13
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------204---------
-J.cx, J.cy 1,12
-cline idx: 12
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------205---------
-J.cx, J.cy 0,12
-cline idx: 12
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------206---------
-J.cx, J.cy 2,11
-cline idx: 11
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------207---------
-J.cx, J.cy 1,11
-cline idx: 11
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------208---------
-J.cx, J.cy 0,11
-cline idx: 11
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------209---------
-J.cx, J.cy 1,10
-cline idx: 10
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------210---------
-J.cx, J.cy 0,10
-cline idx: 10
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------211---------
-J.cx, J.cy 2,9
-cline idx: 9
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------212---------
-J.cx, J.cy 1,9
-cline idx: 9
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------213---------
-J.cx, J.cy 0,9
-cline idx: 9
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------214---------
-J.cx, J.cy 2,8
-cline idx: 8
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------215---------
-J.cx, J.cy 1,8
-cline idx: 8
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------216---------
-J.cx, J.cy 0,8
-cline idx: 8
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------217---------
-J.cx, J.cy 1,7
-cline idx: 7
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------218---------
-J.cx, J.cy 0,7
-cline idx: 7
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------219---------
-J.cx, J.cy 1,6
-cline idx: 6
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------220---------
-J.cx, J.cy 0,6
-cline idx: 6
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------221---------
-J.cx, J.cy 2,5
-cline idx: 5
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------222---------
-J.cx, J.cy 1,5
-cline idx: 5
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------223---------
-J.cx, J.cy 0,5
-cline idx: 5
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------224---------
-J.cx, J.cy 2,4
-cline idx: 4
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------225---------
-J.cx, J.cy 1,4
-cline idx: 4
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------226---------
-J.cx, J.cy 0,4
-cline idx: 4
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------227---------
-J.cx, J.cy 29,3
-cline idx: 3
-cline len: 29
-cline contents: this works and thats great			
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------228---------
-J.cx, J.cy 28,3
-cline idx: 3
-cline len: 29
-cline contents: this works and thats great			
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------229---------
-J.cx, J.cy 27,3
-cline idx: 3
-cline len: 29
-cline contents: this works and thats great			
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------230---------
-J.cx, J.cy 28,3
-cline idx: 3
-cline len: 29
-cline contents: this works and thats great			
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------231---------
-J.cx, J.cy 29,3
-cline idx: 3
-cline len: 29
-cline contents: this works and thats great			
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------232---------
-J.cx, J.cy 0,4
-cline idx: 4
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------233---------
-J.cx, J.cy 1,4
-cline idx: 4
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------234---------
-J.cx, J.cy 2,4
-cline idx: 4
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------235---------
-J.cx, J.cy 0,5
-cline idx: 5
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------236---------
-J.cx, J.cy 1,5
-cline idx: 5
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------237---------
-J.cx, J.cy 2,5
-cline idx: 5
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------238---------
-J.cx, J.cy 0,6
-cline idx: 6
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------239---------
-J.cx, J.cy 1,6
-cline idx: 6
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------240---------
-J.cx, J.cy 0,7
-cline idx: 7
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------241---------
-J.cx, J.cy 1,7
-cline idx: 7
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------242---------
-J.cx, J.cy 0,8
-cline idx: 8
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------243---------
-J.cx, J.cy 1,8
-cline idx: 8
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------244---------
-J.cx, J.cy 2,8
-cline idx: 8
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------245---------
-J.cx, J.cy 0,9
-cline idx: 9
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------246---------
-J.cx, J.cy 1,9
-cline idx: 9
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------247---------
-J.cx, J.cy 2,9
-cline idx: 9
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------248---------
-J.cx, J.cy 0,10
-cline idx: 10
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------249---------
-J.cx, J.cy 1,10
-cline idx: 10
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------250---------
-J.cx, J.cy 0,11
-cline idx: 11
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------251---------
-J.cx, J.cy 1,11
-cline idx: 11
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------252---------
-J.cx, J.cy 2,11
-cline idx: 11
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------253---------
-J.cx, J.cy 0,12
-cline idx: 12
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------254---------
-J.cx, J.cy 1,12
-cline idx: 12
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------255---------
-J.cx, J.cy 0,13
-cline idx: 13
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------256---------
-J.cx, J.cy 1,13
-cline idx: 13
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------257---------
-J.cx, J.cy 2,13
-cline idx: 13
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------258---------
-J.cx, J.cy 1,13
-cline idx: 13
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------259---------
-J.cx, J.cy 2,13
-cline idx: 13
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 0
-tsl is idx: 0
-
---------260---------
-J.cx, J.cy 0,14
-cline idx: 14
-cline len: 3
-cline contents: ;2A
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------261---------
-J.cx, J.cy 1,14
-cline idx: 14
-cline len: 3
-cline contents: ;2A
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------262---------
-J.cx, J.cy 2,14
-cline idx: 14
-cline len: 3
-cline contents: ;2A
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------263---------
-J.cx, J.cy 3,14
-cline idx: 14
-cline len: 3
-cline contents: ;2A
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------264---------
-J.cx, J.cy 2,14
-cline idx: 14
-cline len: 2
-cline contents: ;2A
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------265---------
-J.cx, J.cy 1,14
-cline idx: 14
-cline len: 1
-cline contents: ;2A
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------266---------
-J.cx, J.cy 0,14
-cline idx: 14
-cline len: 0
-cline contents: ;2A
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------267---------
-J.cx, J.cy 2,13
-cline idx: 13
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------268---------
-J.cx, J.cy 1,13
-cline idx: 13
-cline len: 1
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------269---------
-J.cx, J.cy 0,13
-cline idx: 13
-cline len: 0
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------270---------
-J.cx, J.cy 1,12
-cline idx: 12
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------271---------
-J.cx, J.cy 0,12
-cline idx: 12
-cline len: 0
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------272---------
-J.cx, J.cy 2,11
-cline idx: 11
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------273---------
-J.cx, J.cy 1,11
-cline idx: 11
-cline len: 1
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------274---------
-J.cx, J.cy 0,11
-cline idx: 11
-cline len: 0
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------275---------
-J.cx, J.cy 1,10
-cline idx: 10
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------276---------
-J.cx, J.cy 0,10
-cline idx: 10
-cline len: 0
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------277---------
-J.cx, J.cy 2,9
-cline idx: 9
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------278---------
-J.cx, J.cy 1,9
-cline idx: 9
-cline len: 1
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------279---------
-J.cx, J.cy 0,9
-cline idx: 9
-cline len: 0
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------280---------
-J.cx, J.cy 2,8
-cline idx: 8
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------281---------
-J.cx, J.cy 1,8
-cline idx: 8
-cline len: 1
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------282---------
-J.cx, J.cy 0,8
-cline idx: 8
-cline len: 0
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------283---------
-J.cx, J.cy 1,7
-cline idx: 7
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------284---------
-J.cx, J.cy 0,7
-cline idx: 7
-cline len: 0
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------285---------
-J.cx, J.cy 1,6
-cline idx: 6
-cline len: 1
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------286---------
-J.cx, J.cy 0,6
-cline idx: 6
-cline len: 0
-cline contents: 	
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------287---------
-J.cx, J.cy 2,5
-cline idx: 5
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------288---------
-J.cx, J.cy 1,5
-cline idx: 5
-cline len: 1
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------289---------
-J.cx, J.cy 0,5
-cline idx: 5
-cline len: 0
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------290---------
-J.cx, J.cy 2,4
-cline idx: 4
-cline len: 2
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------291---------
-J.cx, J.cy 1,4
-cline idx: 4
-cline len: 1
-cline contents: 		
-cline pr is null: 0
-cline nx is null: 1
-tsl is idx: 0
-
---------292---------
-J.cx, J.cy 0,4
-cline idx: 4
-cline len: 0
-cline contents: 		
+cline len: 9
+cline contents: 					tabs
 cline pr is null: 0
 cline nx is null: 1
 tsl is idx: 0

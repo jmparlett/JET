@@ -144,9 +144,18 @@ how to move the cursor:
 
 
 # File buffer
-1. Loading a file into the file rows liked list structure via args
+## Loading a file into the file rows linked list structure via args
+1. add first line with addline(); getchars from file and call insertchar() on current/first line.
+2. when '\n' is encountered call addline() and step to next line cline = cline->next
+3. getchars from file and call insertchar() on current line
+4. repeat process until EOF is encountered
+5. set cline and tsl (top screen line) to first line
 
-2. writeing the contents of the file rows structure to a file
+## writeing the contents of the file rows structure to a file
+1. starting at fline
+2. while cline->next != null
+3. step through chars in line putchar(line[i]) to file until i == le
+4. then putchar('\n') to file and step to next line; cline = cline->next
 
 3. appropriate confirmations (are you sure you want to save, etc)
 

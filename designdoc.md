@@ -151,25 +151,27 @@ how to move the cursor:
 4. repeat process until EOF is encountered
 5. set cline and tsl (top screen line) to first line
 
-## writeing the contents of the file rows structure to a file
+## writing the contents of the file rows structure to a file
 1. starting at fline
 2. while cline->next != null
 3. step through chars in line putchar(line[i]) to file until i == le
 4. then putchar('\n') to file and step to next line; cline = cline->next
 
-3. appropriate confirmations (are you sure you want to save, etc)
+## appropriate confirmations (are you sure you want to save, etc)
 
-4. prompting for filename when saving a new file (opened the editor without a file arg)
+1. prompting for filename when saving a new file (opened the editor without a file arg)
+if they have a file opened display status msg saying <filename> saved.
+if they opened without a file prompt for a file name to save then display status msg.
 
 
 
 # Beutifications
 
-1. line numbers
+1. line numbers (maybe)
 
 2. status bar (at top shows file name)
 
-3. help menu (shows controls)
+3. help menu (shows controls) (also a maybe)
 
 4. msg bar (at bottom displays prompts for saving files etc
 

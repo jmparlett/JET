@@ -14,13 +14,17 @@
 #define SCRDIMBYTES 100 /* used in kbinput() to capture cursor x and y as a string. Must be able to capture the max screen dimensions */
 #define UP 1000
 #define DOWN 1001
+#define TITLEMSG "JET Text Editor"
 
 
 static struct termios save_term; /* previous term settings */
 static int termsaved; /* status of function */
 char cpos[SCRDIMBYTES];  /* string used for cursor position */
 static editor J; /***** IMPORTANT!!! main editor obj *****/
-static char* cfname; /* name of current file */
+static char *cfname; /* name of current file */
+static char *statusmsg; /* current status msg */ 
+static char *titlemsg; /* current title msg which will be set to the file name if one is present */
+static char conqkey[] = " Ctrl-Q: quit	Ctr-S: save file";
 
 /*****PROTOS******/
 void insertchar(frow *, char);
@@ -104,9 +108,6 @@ int initeditor(){
 	J.cline = NULL;
 	J.tsl = NULL;
 	J.drawstart =0;
-
-	
-	
 	
 	return 0;
 }
@@ -136,6 +137,120 @@ void freescrbuf(scrbuf buf){
 	free(buf.c);
 }
 
+void updatetitlebar(){
+	
+
+	titlemsg = malloc(J.colc);
+	
+	if(cfname != NULL){ /* draw file name in title bar */
+	
+	int fill = (J.colc / 2) - (strlen(cfname)/2); /* begining space fill for file name */
+
+	int i, j;	
+	for(i = 0;  i < fill; ++i) titlemsg[i] = ' ';
+	
+	for(j = 0; j < strlen(cfname); ++j, ++i) titlemsg[i] = cfname[j];
+
+	for(; i < J.colc; ++i) titlemsg[i] = ' ';
+
+	} else { /* draw editor name in title bar */
+		char ename[] = TITLEMSG; /* just using a defines so we can change the msg later if we want to */
+
+		int fill = (J.colc / 2) - (strlen(ename)/2); /* begining space fill for file name */
+
+		int i, j;	
+		for(i = 0;  i < fill; ++i) titlemsg[i] = ' ';
+		
+		for(j = 0; j < strlen(ename); ++j, ++i) titlemsg[i] = ename[j];
+
+		for(; i < J.colc; ++i) titlemsg[i] = ' ';
+
+	}
+}
+
+void drawtitlebar(scrbuf *buf){
+
+	scrbufappend(buf ,"\x1b[0K", 4);
+
+	scrbufappend(buf ,"\x1b[7m", 4);
+
+	scrbufappend(buf , titlemsg, J.colc);
+
+	scrbufappend(buf ,"\x1b[0m\r\n", 6);
+
+}
+void updatestatusmsg(char *msg){
+	
+	/* status: <msg> */
+	if(msg != NULL){
+		statusmsg = (char *)calloc(J.colc, sizeof(char));
+		int i, j;
+
+		strcpy(statusmsg, " Status: ");
+		if(strlen(msg) < (J.colc - strlen(statusmsg))) strcat(statusmsg, msg);
+		else{ /* print error */
+			char err[] = "error: status msg too long";
+			strcat(statusmsg, err);
+		}
+
+		for(i=strlen(statusmsg); i < J.colc; ++i) statusmsg[i] = ' ';
+	} else { /* draw empty bar, we can use this to clear old msgs */
+		statusmsg = (char *)calloc(J.colc, sizeof(char));
+		int i;
+
+		strcpy(statusmsg, " Status: ");
+
+		for(i=9; i < J.colc; ++i) statusmsg[i] = ' ';
+
+	}
+}
+
+
+void drawstatusbar(scrbuf *buf){
+
+	scrbufappend(buf ,"\x1b[0K", 4);
+
+	scrbufappend(buf ,"\x1b[7m", 4);
+
+	scrbufappend(buf , statusmsg, J.colc);
+
+	scrbufappend(buf ,"\x1b[0m\r\n", 6);
+
+
+}
+
+void promptformsg(char p[], char r[], int len){ /* p = prompt, r = place to store response, len = max len of response*/
+	
+	int i, j, c; 
+	i = c = 0;
+	j = strlen(p);
+
+
+	char bufmsg[j + len]; /* holds respone plus msg to print to user */
+	
+	strcpy(bufmsg, p);
+	
+	updatestatusmsg(bufmsg); /* draw initial prompt */
+
+	while(c != ENTER && i < len){
+		read(STDIN, &c, 1);
+		if(typeable(c)) r[i++] = bufmsg[j++] = c;
+		
+	}
+	buf[i] = '\0'; /* delimit string */
+
+}
+
+void drawconqkey(scrbuf *buf){
+
+	scrbufappend(buf ,"\x1b[0K", 4);
+
+	scrbufappend(buf , conqkey, strlen(conqkey));
+
+	scrbufappend(buf ,"\x1b[0m\r\n", 6);
+
+}
+
 int drawscreen(){
 	scrbuf buf = {0, NULL};
 	
@@ -144,11 +259,13 @@ int drawscreen(){
 	write(STDOUT, "\x1b[2J", 4); /* clear screen */
 	write(STDOUT, "\x1b[H", 3); /* move cursor home */
 
+	drawtitlebar(&buf);
+
 	int i=0;
 
 	frow *t = J.tsl; /* file row pointer */
 
-	for(; i < J.rowc-1; ++i){
+	for(; i < J.rowc-5; ++i){
 		if(t != NULL){
 			if(J.cx > J.colc && t == J.cline){/* need to scroll a truncated line */
 				
@@ -169,11 +286,14 @@ int drawscreen(){
 			scrbufappend(&buf, "~\r\n", 3);
 		}
 	}
+
+	drawstatusbar(&buf);
+	drawconqkey(&buf);
 	write(STDOUT, buf.c, buf.len);
 	freescrbuf(buf);
 
 	 /* draw cursor position wrapping x around screen */
-	snprintf(cpos, SCRDIMBYTES, "\x1b[%d;%dH", J.cy+1, ((J.cx+1)%J.colc)+taboffset);
+	snprintf(cpos, SCRDIMBYTES, "\x1b[%d;%dH", J.cy+2, ((J.cx+1)%J.colc)+taboffset);
 	write(STDOUT, cpos, strlen(cpos));
 
 	return 0;
@@ -188,7 +308,7 @@ void scroll(int direction){ /* general function to check if we need to scroll ba
 		if(J.cy == 0) J.tsl = J.tsl->pr;
 		else J.cy--;
 	} else if(direction == DOWN){
-		if(J.cy == J.rowc-2) J.tsl = J.tsl->nx;
+		if(J.cy == J.rowc-6) J.tsl = J.tsl->nx;
 		else J.cy++;
 	}
 }
@@ -267,11 +387,21 @@ void kbinput(){
 		insertchar(J.cline, '\t');
 		
 	} else if(b == SAVE){
-		savefile(cfname); /* save current file */
+		if(cfname != NULL) { /* we have a file opened */
+			savefile(cfname); /* save current file */
+			char savemsg[strlen(cfname)+7];
+			strcpy(savemsg, cfname);
+			strcat(savemsg, " saved");
+			updatestatusmsg(savemsg);
+		} else { /* editor was started without file so prompt for name to save */
+			
+
+		}
 	
 	} else if(b == QUIT){
-		 exitraw(STDIN);
-		 exit(0);
+		write(STDOUT, "\x1b[2J", 4); /* clear screen */
+		exitraw(STDIN);
+		exit(0);
 	}
 
 
@@ -461,18 +591,22 @@ int savefile(char fname[]){
 	
 	FILE *fp;
 
-	if((fp = fopen(fname, "w")) == NULL) return -1;
+	if((fp = fopen(fname, "w")) == NULL){ /* need to save a new file */
 
-	frow *t = J.fline; /* start at top of file */
+		
 
-	while(t != NULL){
+	} else {
+		frow *t = J.fline; /* start at top of file */
 
-		for(int i=0; i < t->len; ++i) fputc(t->s[i], fp);
-		fputc('\n',fp);
-		t = t->nx;
+		while(t != NULL){
+
+			for(int i=0; i < t->len; ++i) fputc(t->s[i], fp);
+			fputc('\n',fp);
+			t = t->nx;
+		}
+
+		return 0;
 	}
-
-	return 0;
 
 	
 
@@ -486,7 +620,10 @@ int main(int argc, char *argv[])
 
 	if(argc > 1){ /* attempt to open a file and read it into the editor */
 		loadfile((cfname = *++argv));		
-	}	
+	} else cfname = NULL; /* no file name */
+
+	updatetitlebar();
+	updatestatusmsg(NULL);
 	
 	FILE *debug = fopen("debug.txt", "w");
 	int dlineno=1;

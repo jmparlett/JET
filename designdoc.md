@@ -160,6 +160,8 @@ how to move the cursor:
 ## appropriate confirmations (are you sure you want to save, etc)
 
 1. prompting for filename when saving a new file (opened the editor without a file arg)
+if they have a file opened display status msg saying <filename> saved.
+if they opened without a file prompt for a file name to save then display status msg.
 
 
 

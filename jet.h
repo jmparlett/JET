@@ -15,7 +15,9 @@ enum editorkeys{
 	
 	TAB = 9,
 	
-	SAVE = 19 /* ctr-s */
+	SAVE = 19, /* ctr-s */
+
+	ESC = 27
 
 
 };

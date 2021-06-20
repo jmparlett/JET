@@ -24,7 +24,7 @@ static editor J; /***** IMPORTANT!!! main editor obj *****/
 static char *cfname; /* name of current file */
 static char *statusmsg; /* current status msg */ 
 static char *titlemsg; /* current title msg which will be set to the file name if one is present */
-static char conqkey[] = " Ctrl-Q: quit	Ctr-S: save file";
+static char conqkey[] = " Ctrl-Q: quit	Ctr-S: save file ESC: cancel";
 
 /*****PROTOS******/
 void insertchar(frow *, char);
@@ -32,6 +32,7 @@ void removechar(frow *);
 void backspace(void);
 void enter(void);
 int taboff(char *, int);
+int drawscreen(void);
 int loadfile(char []);
 int savefile(char []);
 
@@ -184,7 +185,7 @@ void updatestatusmsg(char *msg){
 	/* status: <msg> */
 	if(msg != NULL){
 		statusmsg = (char *)calloc(J.colc, sizeof(char));
-		int i, j;
+		int i;
 
 		strcpy(statusmsg, " Status: ");
 		if(strlen(msg) < (J.colc - strlen(statusmsg))) strcat(statusmsg, msg);
@@ -219,25 +220,33 @@ void drawstatusbar(scrbuf *buf){
 
 }
 
-void promptformsg(char p[], char r[], int len){ /* p = prompt, r = place to store response, len = max len of response*/
+int promptformsg(char p[], char r[], int len){ /* p = prompt, r = place to store response, len = max len of response*/
 	
 	int i, j, c; 
 	i = c = 0;
 	j = strlen(p);
 
 
-	char bufmsg[j + len]; /* holds respone plus msg to print to user */
+	char bufmsg[j + len]; /* holds response plus msg to print to user */
 	
 	strcpy(bufmsg, p);
+
+	for(int u=j; u < (j+len); ++u) bufmsg[u] = '\0'; /* zero what we display so we dont get weird chars */
 	
 	updatestatusmsg(bufmsg); /* draw initial prompt */
+	drawscreen();
 
-	while(c != ENTER && i < len){
+	while(c != ENTER && c != ESC && i < len){
 		read(STDIN, &c, 1);
 		if(typeable(c)) r[i++] = bufmsg[j++] = c;
-		
+		updatestatusmsg(bufmsg);
+		drawscreen();
+	
 	}
-	buf[i] = '\0'; /* delimit string */
+	r[i] = '\0'; /* delimit string */
+	if( c == ESC) return ESC;
+
+	else return 0;
 
 }
 
@@ -388,18 +397,48 @@ void kbinput(){
 		
 	} else if(b == SAVE){
 		if(cfname != NULL) { /* we have a file opened */
+		
 			savefile(cfname); /* save current file */
-			char savemsg[strlen(cfname)+7];
-			strcpy(savemsg, cfname);
-			strcat(savemsg, " saved");
-			updatestatusmsg(savemsg);
-		} else { /* editor was started without file so prompt for name to save */
-			
 
+			char savemsg[strlen(cfname)+7];
+
+			strcpy(savemsg, cfname);
+
+			strcat(savemsg, " saved");
+
+			updatestatusmsg(savemsg);
+
+			updatetitlebar(); /* display new filename */
+
+
+		} else { /* editor was started without file so prompt for name to save */
+						
+			cfname = (char *)malloc(100);
+	
+			if(promptformsg("filename to save? ", cfname, 100) == ESC){ /* cancel */
+				cfname = NULL;
+				updatestatusmsg("save canceled");
+			} else {
+				
+				savefile(cfname); /* save new file */
+
+				char savemsg[strlen(cfname)+7];
+
+				strcpy(savemsg, cfname);
+
+				strcat(savemsg, " saved");
+
+				updatestatusmsg(savemsg);
+
+				updatetitlebar(); /* display new filename */
+			}
+
+					
 		}
 	
 	} else if(b == QUIT){
 		write(STDOUT, "\x1b[2J", 4); /* clear screen */
+		write(STDOUT, "\x1b[H",3); /* send cursor home */
 		exitraw(STDIN);
 		exit(0);
 	}
@@ -594,7 +633,6 @@ int savefile(char fname[]){
 	if((fp = fopen(fname, "w")) == NULL){ /* need to save a new file */
 
 		
-
 	} else {
 		frow *t = J.fline; /* start at top of file */
 
@@ -604,9 +642,9 @@ int savefile(char fname[]){
 			fputc('\n',fp);
 			t = t->nx;
 		}
-
 		return 0;
 	}
+	return -1;
 
 	
 

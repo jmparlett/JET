@@ -73,7 +73,7 @@ int enterraw(int fd)
 	return 0;
 }
 
-int exitraw(int fd){ /* set term to vals saved at begining of program */
+int exitraw(int fd){ /* set term to vals saved at beginning of program */
 	if(termsaved)
 		if(tcsetattr(fd, TCSAFLUSH, &save_term) < 0) return -1;
 	return 0;
@@ -311,8 +311,7 @@ int drawscreen(){
 
 }
 
-void scroll(int direction){ /* general function to check if we need to scroll based on current y. If not we are free to increment 
-		      or decrement y as needed */
+void scroll(int direction){ /* general function to screen based on current y. If not we increment or decrement y */
 	if(direction == UP){
 		if(J.cy == 0) J.tsl = J.tsl->pr;
 		else J.cy--;
@@ -382,13 +381,13 @@ void kbinput(){
 
 			}
 		}
-	} else if(typeable(b)){ /* add character to page... I cant think of a good way to say typeing stuff goes here */
+	} else if(typeable(b)){ /* add character to page... typing stuff goes here */
 		insertchar(J.cline, b);
 	
 	} else if(b == BKSPC) { /* delete character or lines if used at beginning of line standard backspace stuff */
 		backspace();
 
-	} else if (b == ENTER){/* do enter things...*/
+	} else if (b == ENTER){ /* do enter things...*/
 		enter();
 		
 	
@@ -459,7 +458,7 @@ void addline(void){
 		p->s = (char *)calloc(J.colc, sizeof(char));
 		J.fline = J.cline = J.tsl = p;
 		
-	} else { /* add new row after J.cline */
+	} else { /* add new row after J.cline (current line) */
 		
 		frow *new = (frow *)malloc(sizeof(frow));
 		new->idx = J.cline->idx+1;
@@ -495,7 +494,7 @@ void deleteline(frow *line){ /* general use function for removing line node from
 	free(line);
 }
 
-void enter(void){ /* used on for enter not a general function */
+void enter(void){ /* used only for enter not a general function */
 	
 	if(J.fline == NULL){ /* no lines yet so add first line */	
 		addline();
@@ -504,10 +503,9 @@ void enter(void){ /* used on for enter not a general function */
 		addline();
 		J.cline = J.cline->nx;
 		scroll(DOWN);
-		//J.cy++;
 		J.cx=0;
 		
-	} else { /* copy everything from cursor to end of line to new line inserted below then delete moved chars*/
+	} else { /* copy everything from cursor to end of line to new line inserted below then delete moved chars */
 		addline();
 		int t = J.cx, i; /* remember position for deletion later */
 		for(i=t, J.cx=0; i < J.cline->len; ++i) insertchar(J.cline->nx, J.cline->s[i]); /* copy chars */
@@ -515,7 +513,6 @@ void enter(void){ /* used on for enter not a general function */
 		J.cline->len++; /* after loop len is value of last index. Should be one above index */
 		J.cline = J.cline->nx;
 		scroll(DOWN);
-		//J.cy++;
 		J.cx=0;
 	}
 
@@ -526,7 +523,7 @@ void enter(void){ /* used on for enter not a general function */
 
 
 void backspace(void){ /* not a generally useable function do not use out side of backspace */
-	if(J.cx == 0 && J.cline->pr != NULL){/* if at back of line *nd there is a previous line */		
+	if(J.cx == 0 && J.cline->pr != NULL){/* if at back of line and there is a previous line */		
 		J.cline = J.cline->pr;
 
 		int t = J.cx = J.cline->len; /* kinda jank but we have to set this so insertchar works correctly 
@@ -546,7 +543,6 @@ void backspace(void){ /* not a generally useable function do not use out side of
 
 		J.cx = t;
 		scroll(UP);
-		//J.cy--;
  	} else if(J.cline->len > 0 && J.cx > 0){
 		/* delete character behind cursor and move cursor back one and decrement line count by 1*/
 		for(int i=J.cx; i < J.cline->len; i++) J.cline->s[i-1] = J.cline->s[i];
@@ -663,31 +659,11 @@ int main(int argc, char *argv[])
 	updatetitlebar();
 	updatestatusmsg(NULL);
 	
-	FILE *debug = fopen("debug.txt", "w");
-	int dlineno=1;
-
-
-	
 	
 	while(1){
 		drawscreen();
 		kbinput();
-//		fprintf(stderr, cpos+1);
-//		fprintf(stderr, "\nJ.cx, J.cy %d,%d", J.cx,J.cy);
-		fprintf(debug, "\n--------%d---------\n", dlineno);
-		fprintf(debug, "J.cx, J.cy %d,%d\n", J.cx,J.cy);
-		fprintf(debug, "cline idx: %d\n", J.cline->idx);
-		fprintf(debug, "cline len: %d\n", J.cline->len);
-		fprintf(debug, "cline contents: %s\n", J.cline->s);
-		fprintf(debug, "cline pr is null: %d\n", (J.cline->pr == NULL));
-		fprintf(debug, "cline nx is null: %d\n", (J.cline->nx == NULL));
-		fprintf(debug, "tsl is idx: %d\n", J.tsl->idx);
-		fflush(debug);
-		dlineno++;
 	}
-
-
-	exitraw(STDIN);
 }	
 
 

@@ -181,16 +181,8 @@ if they opened without a file prompt for a file name to save then display status
 
 # Bugs
 
-1. why is the last line not rendered? You can type on it but you cant see it.
-	it appears setting the limits of y to rowc-2 means we will always scroll appropriatly
-	also not drawing more than rowc-1 rows means we will always show the top row appropriatly.
-	These are magic bullshit numbers and need to be investigated more so look into it later.
-
-not sure is ansii command to set cursor uses zero indexes or not but it appears to set one less than desired position. given 1 (desired pos is 2) it sets position to all the left on screen
-
-delete needs to account for adjusting indexes of lines and shifting y coordinates as well as x. Deleteion needs a lot of work -_- ........
-
-what happens when the cursor in at zero on a n empty line
-
-need to hand case of removing last line in file (currently attempts to reference null pointer
+# Future plans
+1. Implement line deletion
+2. Implement copy paste
+3. Implement Block deletion and copy pasting
 

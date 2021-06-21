@@ -185,4 +185,6 @@ if they opened without a file prompt for a file name to save then display status
 1. Implement line deletion
 2. Implement copy paste
 3. Implement Block deletion and copy pasting
-
+4. Better scrolling
+	a. move to top/bottom of doc
+	b. scroll page by page (a full screens space)

@@ -180,7 +180,8 @@ if they opened without a file prompt for a file name to save then display status
 
 
 # Bugs
-
+1. Scrolling through truncated lines containing tabs positions the cursor in weird ways.
+	
 # Future plans
 1. Implement line deletion
 2. Implement copy paste

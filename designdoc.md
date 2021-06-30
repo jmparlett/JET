@@ -181,6 +181,7 @@ if they opened without a file prompt for a file name to save then display status
 
 # Bugs
 1. Scrolling through truncated lines containing tabs positions the cursor in weird ways.
+2. A newline is added to the added of the file when it is saved regardless of weather or not there was one.
 	
 # Future plans
 1. Implement line deletion

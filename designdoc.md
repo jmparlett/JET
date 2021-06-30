@@ -180,9 +180,12 @@ if they opened without a file prompt for a file name to save then display status
 
 
 # Bugs
-
+1. Scrolling through truncated lines containing tabs positions the cursor in weird ways.
+	
 # Future plans
 1. Implement line deletion
 2. Implement copy paste
 3. Implement Block deletion and copy pasting
-
+4. Better scrolling
+	a. move to top/bottom of doc
+	b. scroll page by page (a full screens space)

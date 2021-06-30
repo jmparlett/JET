@@ -652,9 +652,15 @@ int main(int argc, char *argv[])
 	enterraw(STDIN);
 	initeditor();
 
+
 	if(argc > 1){ /* attempt to open a file and read it into the editor */
 		loadfile((cfname = *++argv));		
-	} else cfname = NULL; /* no file name */
+	} else{
+		cfname = NULL; /* no file name */
+		addline(); /* temp fix so the program doesnt crash if you press anything other
+						  than enter when you open without a filename arg */
+	}
+
 
 	updatetitlebar();
 	updatestatusmsg(NULL);

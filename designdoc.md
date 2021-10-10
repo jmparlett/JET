@@ -47,7 +47,7 @@ will have their index incremented by 1.
 
 # Writing to lines
 
-line->len must ALWAYS be accurate or shit will break!!!!
+line->len must ALWAYS be accurate or stuff will break!!!!
 
 1. inserting chars
 	c = printable char
@@ -86,7 +86,7 @@ enter
 
 tab 
 
-	how the fuck do you deal withs tabs :( whyyyyyyy.
+	how do you deal with tabs :( whyyyyyyy.
 	taboff(): calculate tabs to the left of x and return an appropriate offset value (on my system tabs = 5 spaces)
 	"The traditional meaning of TAB is to move the cursor to the next multiple of tab width (8 by the Java spec)." What?
 	So this means we need a function to calculate tab offset. We can do this by faking tabs as space in a func.

@@ -16,7 +16,6 @@
 #define DOWN 1001
 #define TITLEMSG "JET Text Editor"
 
-
 static struct termios save_term; /* previous term settings */
 static int termsaved; /* status of function */
 char cpos[SCRDIMBYTES];  /* string used for cursor position */

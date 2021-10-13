@@ -490,6 +490,7 @@ void deleteline(frow *line){ /* general use function for removing line node from
 		line->pr->nx = line->nx;
 		line->nx->pr = line->pr;
 	}
+  free(line->s);
 	free(line);
 }
 
@@ -669,6 +670,8 @@ int main(int argc, char *argv[])
 		drawscreen();
 		kbinput();
 	}
+	//free everything
+	//need to delete everything in the frow structure
 }	
 
 

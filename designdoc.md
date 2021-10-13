@@ -190,4 +190,4 @@ if they opened without a file prompt for a file name to save then display status
 4. Better scrolling
 	a. move to top/bottom of doc
 	b. scroll page by page (a full screens space)
-5. debug linked list of rows (probably didn't free deleted rows)
+5. debug linked list of rows (need to free the sub allocations of each line)

@@ -595,7 +595,10 @@ int taboff(char *s, int x){ /* calculate tab offset for rendering cursor */
 int loadfile(char fname[]){ /* to be called at the start of the program if a file name is passed as an argument */
 	FILE *fp;
 
-	if((fp = fopen(fname, "r")) == NULL) return -1;
+  //if file does not exist create it
+	if((fp = fopen(fname, "r")) == NULL) fp = fopen(fname, "w");
+
+
 
 	int c;
 

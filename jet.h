@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #define TABSIZE 8 /* number of spaces in a tab */
 
-
 /*******KEY CODES*******/
 enum editorkeys{
 	QUIT = 17, /* ctr-q */

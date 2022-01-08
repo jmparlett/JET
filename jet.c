@@ -15,14 +15,15 @@
 #define UP 1000
 #define DOWN 1001
 #define TITLEMSG "JET Text Editor"
+#define MAXFNAMESIZE 100
 
 static struct termios save_term; /* previous term settings */
 static int termsaved; /* status of function */
 char cpos[SCRDIMBYTES];  /* string used for cursor position */
 static editor J; /***** IMPORTANT!!! main editor obj *****/
-static char *cfname; /* name of current file */
-static char *statusmsg; /* current status msg */ 
-static char *titlemsg; /* current title msg which will be set to the file name if one is present */
+static char *cfname = NULL; /* name of current file */
+static char *statusmsg = NULL; /* current status msg */ 
+static char *titlemsg = NULL; /* current title msg which will be set to the file name if one is present */
 static char conqkey[] = " Ctrl-Q: quit	Ctr-S: save file ESC: cancel";
 
 /*****PROTOS******/
@@ -34,6 +35,7 @@ int taboff(char *, int);
 int drawscreen(void);
 int loadfile(char []);
 int savefile(char []);
+void freeEditor(editor J);
 
 
 /**************************** RAW MODE ******************************************/
@@ -93,7 +95,7 @@ int getwindowsize(struct winsize winstruc){
 
 
 int initeditor(){
-
+	
 	write(STDOUT, "\x1b[H", 3); /* send cursor to 0,0 (home) */
 	
 	static struct winsize window; /* contains window rows and cols */
@@ -109,6 +111,10 @@ int initeditor(){
 	J.tsl = NULL;
 	J.drawstart =0;
 	
+	statusmsg = (char *)calloc(J.colc, sizeof(char));
+	
+	titlemsg = malloc(J.colc);
+
 	return 0;
 }
 
@@ -138,10 +144,7 @@ void freescrbuf(scrbuf buf){
 }
 
 void updatetitlebar(){
-	
 
-	titlemsg = malloc(J.colc);
-	
 	if(cfname != NULL){ /* draw file name in title bar */
 	
 	int fill = (J.colc / 2) - (strlen(cfname)/2); /* begining space fill for file name */
@@ -183,7 +186,6 @@ void updatestatusmsg(char *msg){
 	
 	/* status: <msg> */
 	if(msg != NULL){
-		statusmsg = (char *)calloc(J.colc, sizeof(char));
 		int i;
 
 		strcpy(statusmsg, " Status: ");
@@ -195,7 +197,6 @@ void updatestatusmsg(char *msg){
 
 		for(i=strlen(statusmsg); i < J.colc; ++i) statusmsg[i] = ' ';
 	} else { /* draw empty bar, we can use this to clear old msgs */
-		statusmsg = (char *)calloc(J.colc, sizeof(char));
 		int i;
 
 		strcpy(statusmsg, " Status: ");
@@ -410,11 +411,13 @@ void kbinput(){
 
 
 		} else { /* editor was started without file so prompt for name to save */
-						
-			cfname = (char *)malloc(100);
+			if(cfname == NULL){
+				cfname = (char *)malloc(MAXFNAMESIZE);
+			}			
 	
-			if(promptformsg("filename to save? ", cfname, 100) == ESC){ /* cancel */
-				cfname = NULL;
+			if(promptformsg("filename to save? ", cfname, MAXFNAMESIZE) == ESC){ /* cancel */
+				free(cfname);
+				cfname=NULL;
 				updatestatusmsg("save canceled");
 			} else {
 				
@@ -437,6 +440,7 @@ void kbinput(){
 	} else if(b == QUIT){
 		write(STDOUT, "\x1b[2J", 4); /* clear screen */
 		write(STDOUT, "\x1b[H",3); /* send cursor home */
+		freeEditor(J); // free linked list
 		exitraw(STDIN);
 		exit(0);
 	}
@@ -641,12 +645,33 @@ int savefile(char fname[]){
 			fputc('\n',fp);
 			t = t->nx;
 		}
+		fclose(fp);
 		return 0;
 	}
 	return -1;
 
 	
 
+}
+
+void freeEditor(editor J){
+
+	frow* head = J.fline; //first line is head of linked list
+
+	//its doubly linked so we can free prev while cur != null
+	while(head->nx != NULL){
+		head = head->nx;
+		free(head->pr->s);
+		free(head->pr);
+	}
+	//free last node
+	free(head->s);
+	free(head);
+
+	//free globals
+	if(cfname != NULL) free(cfname);
+	if(statusmsg != NULL) free(statusmsg);
+	if(titlemsg != NULL) free(titlemsg);
 }
 
 int main(int argc, char *argv[])
@@ -657,24 +682,23 @@ int main(int argc, char *argv[])
 
 
 	if(argc > 1){ /* attempt to open a file and read it into the editor */
-		loadfile((cfname = *++argv));		
+		cfname = malloc(sizeof(char)*MAXFNAMESIZE);
+		strcpy(cfname, *++argv); /* we always the cfname on the heap */
+		loadfile(cfname);		
 	} else{
-		cfname = NULL; /* no file name */
-		addline(); /* temp fix so the program doesnt crash if you press anything other
-						  than enter when you open without a filename arg */
+		addline(); /* if no file we insert one line to start */
 	}
 
 
 	updatetitlebar();
 	updatestatusmsg(NULL);
 	
-	
+
+	//infinite loop, exiting program is handled in kbinput()	
 	while(1){
 		drawscreen();
 		kbinput();
 	}
-	//free everything
-	//need to delete everything in the frow structure
 }	
 
 

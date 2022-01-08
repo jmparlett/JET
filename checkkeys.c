@@ -1,3 +1,10 @@
+/*
+ The purpose of this program is simply to check key codes and print
+ them in a convenient format. You can use it to discover key codes to
+ use in building an editor.
+*/
+
+
 #include <unistd.h>
 #include <termios.h>
 #include <stdio.h>
@@ -96,6 +103,7 @@ int main()
 
 	exitraw(STDIN);
 }	
+
 
 
 

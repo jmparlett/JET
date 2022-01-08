@@ -683,7 +683,7 @@ int main(int argc, char *argv[])
 
 	if(argc > 1){ /* attempt to open a file and read it into the editor */
 		cfname = malloc(sizeof(char)*MAXFNAMESIZE);
-		strcpy(cfname, *++argv); /* we always the cfname on the heap */
+		strcpy(cfname, *++argv); /* we always want cfname on the heap */
 		loadfile(cfname);		
 	} else{
 		addline(); /* if no file we insert one line to start */

@@ -1,5 +1,5 @@
 # JET
-Lightly featured text editor written in C borrows from antirez's Kilo text editor for buffering the screen. antirez's excellent guide and source code can be found at https://github.com/antirez/kilo
+Lightly featured text editor written in C borrows from antirez's Kilo text editor for buffering the screen. Antirez's excellent guide and source code can be found at https://github.com/antirez/kilo
 ![image](jet.png)
 
 ## Usage

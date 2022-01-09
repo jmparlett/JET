@@ -16,6 +16,6 @@ Lightly featured text editor written in C borrows from antirez's Kilo text edito
 - The `end` key moves to the end of the line
 
 ## Installation
-To install `jet` simply clone the repo and run `sudo make install` in the repo root. This place the `jet` binary in your `/usr/local/bin`.
+To install `jet` simply clone the repo and run `sudo make install` in the repo root. This places the `jet` binary in your `/usr/local/bin`.
 If you would like to place the binary elsewhere you can run `make` in the repo root and move the binary labled `jet` to your prefered location.
 
